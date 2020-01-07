@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		394CE91F23C4C69A00C38156 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE91E23C4C69A00C38156 /* AppDelegate.swift */; };
+		394CE92123C4C69A00C38156 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE92023C4C69A00C38156 /* SceneDelegate.swift */; };
+		394CE92323C4C69A00C38156 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE92223C4C69A00C38156 /* ViewController.swift */; };
+		394CE92623C4C69A00C38156 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 394CE92423C4C69A00C38156 /* Main.storyboard */; };
+		394CE92823C4C69C00C38156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 394CE92723C4C69C00C38156 /* Assets.xcassets */; };
+		394CE92B23C4C69C00C38156 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 394CE92923C4C69C00C38156 /* LaunchScreen.storyboard */; };
+		394CE93623C4C69D00C38156 /* ViedoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE93523C4C69D00C38156 /* ViedoMakerTests.swift */; };
+		394CE94123C4C69D00C38156 /* ViedoMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE94023C4C69D00C38156 /* ViedoMakerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		394CE93223C4C69D00C38156 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 394CE91323C4C69A00C38156 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 394CE91A23C4C69A00C38156;
+			remoteInfo = ViedoMaker;
+		};
+		394CE93D23C4C69D00C38156 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 394CE91323C4C69A00C38156 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 394CE91A23C4C69A00C38156;
+			remoteInfo = ViedoMaker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		394CE91B23C4C69A00C38156 /* ViedoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViedoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		394CE91E23C4C69A00C38156 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		394CE92023C4C69A00C38156 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		394CE92223C4C69A00C38156 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		394CE92523C4C69A00C38156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		394CE92723C4C69C00C38156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		394CE92A23C4C69C00C38156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		394CE92C23C4C69C00C38156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		394CE93123C4C69D00C38156 /* ViedoMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViedoMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		394CE93523C4C69D00C38156 /* ViedoMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViedoMakerTests.swift; sourceTree = "<group>"; };
+		394CE93723C4C69D00C38156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		394CE93C23C4C69D00C38156 /* ViedoMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViedoMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		394CE94023C4C69D00C38156 /* ViedoMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViedoMakerUITests.swift; sourceTree = "<group>"; };
+		394CE94223C4C69D00C38156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		394CE91823C4C69A00C38156 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		394CE92E23C4C69D00C38156 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		394CE93923C4C69D00C38156 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		394CE91223C4C69A00C38156 = {
+			isa = PBXGroup;
+			children = (
+				394CE91D23C4C69A00C38156 /* ViedoMaker */,
+				394CE93423C4C69D00C38156 /* ViedoMakerTests */,
+				394CE93F23C4C69D00C38156 /* ViedoMakerUITests */,
+				394CE91C23C4C69A00C38156 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		394CE91C23C4C69A00C38156 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				394CE91B23C4C69A00C38156 /* ViedoMaker.app */,
+				394CE93123C4C69D00C38156 /* ViedoMakerTests.xctest */,
+				394CE93C23C4C69D00C38156 /* ViedoMakerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		394CE91D23C4C69A00C38156 /* ViedoMaker */ = {
+			isa = PBXGroup;
+			children = (
+				394CE91E23C4C69A00C38156 /* AppDelegate.swift */,
+				394CE92023C4C69A00C38156 /* SceneDelegate.swift */,
+				394CE92223C4C69A00C38156 /* ViewController.swift */,
+				394CE92423C4C69A00C38156 /* Main.storyboard */,
+				394CE92723C4C69C00C38156 /* Assets.xcassets */,
+				394CE92923C4C69C00C38156 /* LaunchScreen.storyboard */,
+				394CE92C23C4C69C00C38156 /* Info.plist */,
+			);
+			path = ViedoMaker;
+			sourceTree = "<group>";
+		};
+		394CE93423C4C69D00C38156 /* ViedoMakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				394CE93523C4C69D00C38156 /* ViedoMakerTests.swift */,
+				394CE93723C4C69D00C38156 /* Info.plist */,
+			);
+			path = ViedoMakerTests;
+			sourceTree = "<group>";
+		};
+		394CE93F23C4C69D00C38156 /* ViedoMakerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				394CE94023C4C69D00C38156 /* ViedoMakerUITests.swift */,
+				394CE94223C4C69D00C38156 /* Info.plist */,
+			);
+			path = ViedoMakerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		394CE91A23C4C69A00C38156 /* ViedoMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 394CE94523C4C69D00C38156 /* Build configuration list for PBXNativeTarget "ViedoMaker" */;
+			buildPhases = (
+				394CE91723C4C69A00C38156 /* Sources */,
+				394CE91823C4C69A00C38156 /* Frameworks */,
+				394CE91923C4C69A00C38156 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ViedoMaker;
+			productName = ViedoMaker;
+			productReference = 394CE91B23C4C69A00C38156 /* ViedoMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		394CE93023C4C69D00C38156 /* ViedoMakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 394CE94823C4C69D00C38156 /* Build configuration list for PBXNativeTarget "ViedoMakerTests" */;
+			buildPhases = (
+				394CE92D23C4C69D00C38156 /* Sources */,
+				394CE92E23C4C69D00C38156 /* Frameworks */,
+				394CE92F23C4C69D00C38156 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				394CE93323C4C69D00C38156 /* PBXTargetDependency */,
+			);
+			name = ViedoMakerTests;
+			productName = ViedoMakerTests;
+			productReference = 394CE93123C4C69D00C38156 /* ViedoMakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		394CE93B23C4C69D00C38156 /* ViedoMakerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 394CE94B23C4C69D00C38156 /* Build configuration list for PBXNativeTarget "ViedoMakerUITests" */;
+			buildPhases = (
+				394CE93823C4C69D00C38156 /* Sources */,
+				394CE93923C4C69D00C38156 /* Frameworks */,
+				394CE93A23C4C69D00C38156 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				394CE93E23C4C69D00C38156 /* PBXTargetDependency */,
+			);
+			name = ViedoMakerUITests;
+			productName = ViedoMakerUITests;
+			productReference = 394CE93C23C4C69D00C38156 /* ViedoMakerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		394CE91323C4C69A00C38156 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = Ibtikar;
+				TargetAttributes = {
+					394CE91A23C4C69A00C38156 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+					394CE93023C4C69D00C38156 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 394CE91A23C4C69A00C38156;
+					};
+					394CE93B23C4C69D00C38156 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 394CE91A23C4C69A00C38156;
+					};
+				};
+			};
+			buildConfigurationList = 394CE91623C4C69A00C38156 /* Build configuration list for PBXProject "ViedoMaker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 394CE91223C4C69A00C38156;
+			productRefGroup = 394CE91C23C4C69A00C38156 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				394CE91A23C4C69A00C38156 /* ViedoMaker */,
+				394CE93023C4C69D00C38156 /* ViedoMakerTests */,
+				394CE93B23C4C69D00C38156 /* ViedoMakerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		394CE91923C4C69A00C38156 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				394CE92B23C4C69C00C38156 /* LaunchScreen.storyboard in Resources */,
+				394CE92823C4C69C00C38156 /* Assets.xcassets in Resources */,
+				394CE92623C4C69A00C38156 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		394CE92F23C4C69D00C38156 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		394CE93A23C4C69D00C38156 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		394CE91723C4C69A00C38156 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				394CE92323C4C69A00C38156 /* ViewController.swift in Sources */,
+				394CE91F23C4C69A00C38156 /* AppDelegate.swift in Sources */,
+				394CE92123C4C69A00C38156 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		394CE92D23C4C69D00C38156 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				394CE93623C4C69D00C38156 /* ViedoMakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		394CE93823C4C69D00C38156 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				394CE94123C4C69D00C38156 /* ViedoMakerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		394CE93323C4C69D00C38156 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 394CE91A23C4C69A00C38156 /* ViedoMaker */;
+			targetProxy = 394CE93223C4C69D00C38156 /* PBXContainerItemProxy */;
+		};
+		394CE93E23C4C69D00C38156 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 394CE91A23C4C69A00C38156 /* ViedoMaker */;
+			targetProxy = 394CE93D23C4C69D00C38156 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		394CE92423C4C69A00C38156 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				394CE92523C4C69A00C38156 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		394CE92923C4C69C00C38156 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				394CE92A23C4C69C00C38156 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		394CE94323C4C69D00C38156 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		394CE94423C4C69D00C38156 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		394CE94623C4C69D00C38156 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C86JD592M;
+				INFOPLIST_FILE = ViedoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibtikar.ViedoMaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		394CE94723C4C69D00C38156 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C86JD592M;
+				INFOPLIST_FILE = ViedoMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibtikar.ViedoMaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		394CE94923C4C69D00C38156 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C86JD592M;
+				INFOPLIST_FILE = ViedoMakerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibtikar.ViedoMakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViedoMaker.app/ViedoMaker";
+			};
+			name = Debug;
+		};
+		394CE94A23C4C69D00C38156 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C86JD592M;
+				INFOPLIST_FILE = ViedoMakerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibtikar.ViedoMakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViedoMaker.app/ViedoMaker";
+			};
+			name = Release;
+		};
+		394CE94C23C4C69D00C38156 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C86JD592M;
+				INFOPLIST_FILE = ViedoMakerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibtikar.ViedoMakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ViedoMaker;
+			};
+			name = Debug;
+		};
+		394CE94D23C4C69D00C38156 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2C86JD592M;
+				INFOPLIST_FILE = ViedoMakerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibtikar.ViedoMakerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ViedoMaker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		394CE91623C4C69A00C38156 /* Build configuration list for PBXProject "ViedoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				394CE94323C4C69D00C38156 /* Debug */,
+				394CE94423C4C69D00C38156 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		394CE94523C4C69D00C38156 /* Build configuration list for PBXNativeTarget "ViedoMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				394CE94623C4C69D00C38156 /* Debug */,
+				394CE94723C4C69D00C38156 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		394CE94823C4C69D00C38156 /* Build configuration list for PBXNativeTarget "ViedoMakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				394CE94923C4C69D00C38156 /* Debug */,
+				394CE94A23C4C69D00C38156 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		394CE94B23C4C69D00C38156 /* Build configuration list for PBXNativeTarget "ViedoMakerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				394CE94C23C4C69D00C38156 /* Debug */,
+				394CE94D23C4C69D00C38156 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 394CE91323C4C69A00C38156 /* Project object */;
+}
