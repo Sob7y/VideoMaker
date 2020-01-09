@@ -795,7 +795,7 @@ class OptiVideoEditor: NSObject {
             let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(value: 0, timescale: 1), actualTime: nil)
             let thumbnail = UIImage(cgImage: cgImage)
             return thumbnail
-        } catch let error {
+        } catch _ {
 //            OptiToast.showNegativeMessage(message: error.localizedDescription)
             return nil
         }

@@ -266,15 +266,15 @@ extension CreateVideoViewController {
 
 extension CreateVideoViewController {
     //Trim Video Function
-    func cropVideo(sourceURL1: URL, startTime:Float, endTime:Float) {
+    func cropVideo(sourceURL1: URL?, startTime:Float, endTime:Float) {
         let manager = FileManager.default
         
         guard let documentDirectory = try? manager.url(for: .documentDirectory,
                                                        in: .userDomainMask,
                                                        appropriateFor: nil,
                                                        create: true) else {return}
-        guard let mediaType = "mp4" as? String else {return}
-        guard (sourceURL1 as? URL) != nil else {return}
+        let mediaType = "mp4"
+        guard sourceURL1 != nil else {return}
         
         if mediaType == kUTTypeMovie as String || mediaType == "mp4" as String
         {
@@ -312,10 +312,10 @@ extension CreateVideoViewController {
                     print("exported at \(outputURL)")
                     self.saveToCameraRoll(URL: outputURL as NSURL?)
                 case .failed:
-                    print("failed \(exportSession.error)")
+                    print("failed \(String(describing: exportSession.error))")
                     
                 case .cancelled:
-                    print("cancelled \(exportSession.error)")
+                    print("cancelled \(String(describing: exportSession.error))")
                     
                 default: break
                 }
