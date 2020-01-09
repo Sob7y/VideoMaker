@@ -24,6 +24,7 @@ class CreateVideoViewController: UIViewController {
     var thumbtimeSeconds: Int!
     var videoPlaybackPosition: CGFloat = 0.0
     var asset: AVAsset!
+    var numberOfCroppedVideos = 0
 
   //  @IBOutlet weak var videoView: VideoView!
     @IBOutlet private weak var videoPlayerView: UIView!
@@ -287,13 +288,14 @@ extension CreateVideoViewController {
             do {
                 try manager.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
                 //let name = hostent.newName()
-                outputURL = outputURL.appendingPathComponent("1.mp4")
+                numberOfCroppedVideos += 1
+                outputURL = outputURL.appendingPathComponent("\(numberOfCroppedVideos).mp4")
             }catch let error {
                 print(error)
             }
             
             //Remove existing file
-            _ = try? manager.removeItem(at: outputURL)
+         //   _ = try? manager.removeItem(at: outputURL)
             
             guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return}
             exportSession.outputURL = outputURL
