@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 5d89467e961e7f1de77d8a973c03779e0b266e9e
+PODS:
+  - Presentr (1.9)
+
+DEPENDENCIES:
+  - Presentr
+
+SPEC REPOS:
+  trunk:
+    - Presentr
+
+SPEC CHECKSUMS:
+  Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
+
+PODFILE CHECKSUM: e558d39ebaa5e373bde3951f46abb3a8de1c3843
 
 COCOAPODS: 1.8.4

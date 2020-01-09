@@ -6,6 +6,7 @@ target 'ViedoMaker' do
   use_frameworks!
 
   # Pods for ViedoMaker
+  pod 'Presentr'
 
   target 'ViedoMakerTests' do
     inherit! :search_paths

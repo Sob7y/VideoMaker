@@ -3,18 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		394CE91F23C4C69A00C38156 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE91E23C4C69A00C38156 /* AppDelegate.swift */; };
 		394CE92123C4C69A00C38156 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE92023C4C69A00C38156 /* SceneDelegate.swift */; };
-		394CE92323C4C69A00C38156 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE92223C4C69A00C38156 /* ViewController.swift */; };
 		394CE92623C4C69A00C38156 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 394CE92423C4C69A00C38156 /* Main.storyboard */; };
 		394CE92823C4C69C00C38156 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 394CE92723C4C69C00C38156 /* Assets.xcassets */; };
 		394CE92B23C4C69C00C38156 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 394CE92923C4C69C00C38156 /* LaunchScreen.storyboard */; };
 		394CE93623C4C69D00C38156 /* ViedoMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE93523C4C69D00C38156 /* ViedoMakerTests.swift */; };
 		394CE94123C4C69D00C38156 /* ViedoMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE94023C4C69D00C38156 /* ViedoMakerUITests.swift */; };
+		394CE95323C4CA5600C38156 /* CreateVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394CE95223C4CA5600C38156 /* CreateVideoViewController.swift */; };
+		39A557CC23C4D9A500493C82 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557C923C4D9A500493C82 /* Container.swift */; };
+		39A557CD23C4D9A500493C82 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557CA23C4D9A500493C82 /* AppManager.swift */; };
+		39A557CE23C4D9A500493C82 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557CB23C4D9A500493C82 /* Constant.swift */; };
+		39A557D223C4DD8D00493C82 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557D023C4DD8D00493C82 /* VideoView.swift */; };
+		39A557D323C4DD8D00493C82 /* VideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557D123C4DD8D00493C82 /* VideoPicker.swift */; };
+		39A557DA23C605F700493C82 /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557D923C605F700493C82 /* CropViewController.swift */; };
+		39A557E123C614FB00493C82 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E023C614FB00493C82 /* UIView+Additions.swift */; };
+		39A557E323C6161D00493C82 /* VideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E223C6161D00493C82 /* VideoEditor.swift */; };
+		39A557E523C7246200493C82 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E423C7246200493C82 /* RangeSlider.swift */; };
 		64BE401482308926EB386CD9 /* Pods_ViedoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23090B0ABD4533994C4BCB91 /* Pods_ViedoMaker.framework */; };
 		86091B5CB3EC4CD815AC9B5D /* Pods_ViedoMakerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B80E7F3299DA185E0107CE5 /* Pods_ViedoMakerTests.framework */; };
 		CC65818BA6286E6CBDC9B4AB /* Pods_ViedoMaker_ViedoMakerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2398DFD8A7F24E8333D221F /* Pods_ViedoMaker_ViedoMakerUITests.framework */; };
@@ -43,7 +52,6 @@
 		394CE91B23C4C69A00C38156 /* ViedoMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViedoMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		394CE91E23C4C69A00C38156 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		394CE92023C4C69A00C38156 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		394CE92223C4C69A00C38156 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		394CE92523C4C69A00C38156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		394CE92723C4C69C00C38156 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		394CE92A23C4C69C00C38156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +62,16 @@
 		394CE93C23C4C69D00C38156 /* ViedoMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViedoMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		394CE94023C4C69D00C38156 /* ViedoMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViedoMakerUITests.swift; sourceTree = "<group>"; };
 		394CE94223C4C69D00C38156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		394CE95223C4CA5600C38156 /* CreateVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVideoViewController.swift; sourceTree = "<group>"; };
+		39A557C923C4D9A500493C82 /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		39A557CA23C4D9A500493C82 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		39A557CB23C4D9A500493C82 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		39A557D023C4DD8D00493C82 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		39A557D123C4DD8D00493C82 /* VideoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPicker.swift; sourceTree = "<group>"; };
+		39A557D923C605F700493C82 /* CropViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
+		39A557E023C614FB00493C82 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		39A557E223C6161D00493C82 /* VideoEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoEditor.swift; sourceTree = "<group>"; };
+		39A557E423C7246200493C82 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		4A95580EF6039D1F93BB3ED3 /* Pods-ViedoMaker-ViedoMakerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViedoMaker-ViedoMakerUITests.debug.xcconfig"; path = "Target Support Files/Pods-ViedoMaker-ViedoMakerUITests/Pods-ViedoMaker-ViedoMakerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B80E7F3299DA185E0107CE5 /* Pods_ViedoMakerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViedoMakerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2398DFD8A7F24E8333D221F /* Pods_ViedoMaker_ViedoMakerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViedoMaker_ViedoMakerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,13 +134,13 @@
 		394CE91D23C4C69A00C38156 /* ViedoMaker */ = {
 			isa = PBXGroup;
 			children = (
-				394CE91E23C4C69A00C38156 /* AppDelegate.swift */,
-				394CE92023C4C69A00C38156 /* SceneDelegate.swift */,
-				394CE92223C4C69A00C38156 /* ViewController.swift */,
-				394CE92423C4C69A00C38156 /* Main.storyboard */,
-				394CE92723C4C69C00C38156 /* Assets.xcassets */,
-				394CE92923C4C69C00C38156 /* LaunchScreen.storyboard */,
-				394CE92C23C4C69C00C38156 /* Info.plist */,
+				39A557E623C72AD800493C82 /* Spikes */,
+				39A557DF23C614E800493C82 /* Extensions */,
+				394CE95423C4D85C00C38156 /* Services */,
+				394CE94F23C4C9F200C38156 /* Features */,
+				394CE94E23C4C9DF00C38156 /* AppDelegate */,
+				394CE95123C4CA0700C38156 /* UI */,
+				394CE95023C4C9FD00C38156 /* Resources */,
 			);
 			path = ViedoMaker;
 			sourceTree = "<group>";
@@ -145,6 +163,87 @@
 			path = ViedoMakerUITests;
 			sourceTree = "<group>";
 		};
+		394CE94E23C4C9DF00C38156 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				394CE91E23C4C69A00C38156 /* AppDelegate.swift */,
+				394CE92023C4C69A00C38156 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		394CE94F23C4C9F200C38156 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				39A557CF23C4DD7700493C82 /* Choose Video */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		394CE95023C4C9FD00C38156 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				394CE92723C4C69C00C38156 /* Assets.xcassets */,
+				394CE92C23C4C69C00C38156 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		394CE95123C4CA0700C38156 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				394CE92423C4C69A00C38156 /* Main.storyboard */,
+				394CE92923C4C69C00C38156 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		394CE95423C4D85C00C38156 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				39A557CA23C4D9A500493C82 /* AppManager.swift */,
+				39A557CB23C4D9A500493C82 /* Constant.swift */,
+				39A557C923C4D9A500493C82 /* Container.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		39A557CF23C4DD7700493C82 /* Choose Video */ = {
+			isa = PBXGroup;
+			children = (
+				394CE95223C4CA5600C38156 /* CreateVideoViewController.swift */,
+				39A557D123C4DD8D00493C82 /* VideoPicker.swift */,
+				39A557E423C7246200493C82 /* RangeSlider.swift */,
+			);
+			path = "Choose Video";
+			sourceTree = "<group>";
+		};
+		39A557D423C4EB2600493C82 /* CropView */ = {
+			isa = PBXGroup;
+			children = (
+				39A557D923C605F700493C82 /* CropViewController.swift */,
+			);
+			path = CropView;
+			sourceTree = "<group>";
+		};
+		39A557DF23C614E800493C82 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				39A557E023C614FB00493C82 /* UIView+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		39A557E623C72AD800493C82 /* Spikes */ = {
+			isa = PBXGroup;
+			children = (
+				39A557D423C4EB2600493C82 /* CropView */,
+				39A557D023C4DD8D00493C82 /* VideoView.swift */,
+				39A557E223C6161D00493C82 /* VideoEditor.swift */,
+			);
+			path = Spikes;
+			sourceTree = "<group>";
+		};
 		55DA88919FCEFDC2FD4CE79F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +264,6 @@
 				B5CB4ABD944A9C4CD3198A6A /* Pods-ViedoMakerTests.debug.xcconfig */,
 				B2D86369D0DC802DA601C2FF /* Pods-ViedoMakerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -180,6 +278,7 @@
 				394CE91723C4C69A00C38156 /* Sources */,
 				394CE91823C4C69A00C38156 /* Frameworks */,
 				394CE91923C4C69A00C38156 /* Resources */,
+				D1136645BEC621A8E472064B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -217,6 +316,7 @@
 				394CE93823C4C69D00C38156 /* Sources */,
 				394CE93923C4C69D00C38156 /* Frameworks */,
 				394CE93A23C4C69D00C38156 /* Resources */,
+				2D65630BEF3A1C8B46D0EF41 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -321,6 +421,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2D65630BEF3A1C8B46D0EF41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViedoMaker-ViedoMakerUITests/Pods-ViedoMaker-ViedoMakerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViedoMaker-ViedoMakerUITests/Pods-ViedoMaker-ViedoMakerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViedoMaker-ViedoMakerUITests/Pods-ViedoMaker-ViedoMakerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		32099D2A7AB3BC131613E36B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,6 +482,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D1136645BEC621A8E472064B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViedoMaker/Pods-ViedoMaker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ViedoMaker/Pods-ViedoMaker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ViedoMaker/Pods-ViedoMaker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -372,9 +506,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				394CE92323C4C69A00C38156 /* ViewController.swift in Sources */,
+				39A557E123C614FB00493C82 /* UIView+Additions.swift in Sources */,
 				394CE91F23C4C69A00C38156 /* AppDelegate.swift in Sources */,
+				39A557D323C4DD8D00493C82 /* VideoPicker.swift in Sources */,
+				39A557E323C6161D00493C82 /* VideoEditor.swift in Sources */,
+				39A557E523C7246200493C82 /* RangeSlider.swift in Sources */,
+				39A557D223C4DD8D00493C82 /* VideoView.swift in Sources */,
+				39A557CD23C4D9A500493C82 /* AppManager.swift in Sources */,
+				39A557CC23C4D9A500493C82 /* Container.swift in Sources */,
+				39A557DA23C605F700493C82 /* CropViewController.swift in Sources */,
+				394CE95323C4CA5600C38156 /* CreateVideoViewController.swift in Sources */,
 				394CE92123C4C69A00C38156 /* SceneDelegate.swift in Sources */,
+				39A557CE23C4D9A500493C82 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +693,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2C86JD592M;
-				INFOPLIST_FILE = ViedoMaker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ViedoMaker/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,7 +712,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2C86JD592M;
-				INFOPLIST_FILE = ViedoMaker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ViedoMaker/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
