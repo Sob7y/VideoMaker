@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -99,6 +100,33 @@
                                                     <constraint firstAttribute="height" constant="50" id="oEs-1c-hof"/>
                                                 </constraints>
                                             </stackView>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-C5-aMq">
+                                                <rect key="frame" x="0.0" y="450" width="414" height="120"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="dDF-ew-dYS"/>
+                                                </constraints>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="s7G-hb-ehX">
+                                                    <size key="itemSize" width="50" height="50"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="N95-vy-qk1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IXd-zQ-Pam">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </collectionViewCellContentView>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Ygv-zd-yd6"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="GiT-SB-cGy"/>
+                                                </connections>
+                                            </collectionView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dir-nk-p4H">
                                                 <rect key="frame" x="0.0" y="677" width="414" height="141"/>
                                                 <subviews>
@@ -246,15 +274,18 @@
                                         <constraints>
                                             <constraint firstItem="Gp8-cZ-CqQ" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" constant="20" id="14Z-se-b3l"/>
                                             <constraint firstAttribute="bottom" secondItem="Dir-nk-p4H" secondAttribute="bottom" id="83w-Yd-QfE"/>
+                                            <constraint firstItem="VlL-C5-aMq" firstAttribute="top" secondItem="Eo9-7K-yLe" secondAttribute="bottom" id="Ji7-yT-cVI"/>
                                             <constraint firstItem="1Ik-Ys-qUx" firstAttribute="top" secondItem="wMn-eC-Ii0" secondAttribute="top" constant="20" id="KDO-Co-69c"/>
                                             <constraint firstAttribute="trailing" secondItem="Dir-nk-p4H" secondAttribute="trailing" id="MBm-cd-bTa"/>
                                             <constraint firstItem="Gp8-cZ-CqQ" firstAttribute="top" secondItem="1Ik-Ys-qUx" secondAttribute="bottom" constant="16" id="Qw8-nr-e2q"/>
+                                            <constraint firstItem="VlL-C5-aMq" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" id="RBx-R7-evu"/>
                                             <constraint firstItem="Dir-nk-p4H" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" id="a98-jc-55d"/>
                                             <constraint firstAttribute="trailing" secondItem="Gp8-cZ-CqQ" secondAttribute="trailing" constant="20" id="agM-so-6ib"/>
                                             <constraint firstItem="Eo9-7K-yLe" firstAttribute="centerX" secondItem="1Ik-Ys-qUx" secondAttribute="centerX" id="c4K-15-VBj"/>
                                             <constraint firstItem="Eo9-7K-yLe" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" constant="20" id="gQu-Oq-5Dr"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Eo9-7K-yLe" secondAttribute="trailing" constant="20" id="gkb-iH-Cu1"/>
                                             <constraint firstItem="Eo9-7K-yLe" firstAttribute="top" secondItem="1Ik-Ys-qUx" secondAttribute="bottom" constant="80" id="k4A-oL-T5F"/>
+                                            <constraint firstAttribute="trailing" secondItem="VlL-C5-aMq" secondAttribute="trailing" id="wWt-3h-Tu1"/>
                                             <constraint firstAttribute="trailing" secondItem="1Ik-Ys-qUx" secondAttribute="trailing" id="wXH-53-tfT"/>
                                             <constraint firstItem="1Ik-Ys-qUx" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" id="xQ1-IA-See"/>
                                         </constraints>
@@ -282,6 +313,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="croppedVideosCollectionView" destination="VlL-C5-aMq" id="ReU-3t-2i5"/>
                         <outlet property="endTimeLabel" destination="F0a-lE-e6o" id="uDU-F4-MQo"/>
                         <outlet property="frameContainerView" destination="3wm-Op-kWV" id="jmR-RU-4qO"/>
                         <outlet property="progressContainerView" destination="Gp8-cZ-CqQ" id="HfW-i1-9bP"/>

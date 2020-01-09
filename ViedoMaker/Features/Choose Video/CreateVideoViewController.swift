@@ -25,6 +25,7 @@ class CreateVideoViewController: UIViewController {
     var videoPlaybackPosition: CGFloat = 0.0
     var asset: AVAsset!
     var numberOfCroppedVideos = 0
+    var outputURLs: [URL] = []
 
   //  @IBOutlet weak var videoView: VideoView!
     @IBOutlet private weak var videoPlayerView: UIView!
@@ -37,6 +38,7 @@ class CreateVideoViewController: UIViewController {
     @IBOutlet private weak var frameContainerView: UIView!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak var croppedVideosCollectionView: UICollectionView!
     
     var videoTotalSeconds = 0.0
     var rangeSlider: RangeSlider! = nil
@@ -54,7 +56,13 @@ class CreateVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerCollectionViewCells()
+    }
+    
+    private func registerCollectionViewCells() {
+        self.croppedVideosCollectionView.register(
+        UINib(nibName: "CroppedVideoCollectionViewCell", bundle: nil),
+        forCellWithReuseIdentifier: "CroppedVideoCollectionViewCell")
     }
     
 //    private func setupVideo() {
@@ -125,12 +133,21 @@ extension CreateVideoViewController: VideoPickerDelegate {
     func addVideoPlayer(videoUrl: URL, to view: UIView) {
         self.avplayer = AVPlayer(url: videoUrl)
         playerController.player = self.avplayer
-       // self.addChild(playerController)
+        self.addChild(playerController)
         view.addSubview(playerController.view)
         playerController.view.frame = view.bounds
         playerController.showsPlaybackControls = true
         self.avplayer.play()
     }
+    
+//    //MARK: add Video to View
+//     func addVideo(videoUrl: URL, to view: UIView) {
+//         playerController.player = self.avplayer
+//        // self.addChild(playerController)
+//         view.addSubview(playerController.view)
+//         playerController.view.frame = view.bounds
+//         playerController.showsPlaybackControls = true
+//     }
     
     func setVideoDuration(_ url: URL) {
         let asset = AVAsset(url: url)
@@ -290,6 +307,9 @@ extension CreateVideoViewController {
                 //let name = hostent.newName()
                 numberOfCroppedVideos += 1
                 outputURL = outputURL.appendingPathComponent("\(numberOfCroppedVideos).mp4")
+                outputURLs.append(outputURL)
+                self.croppedVideosCollectionView.reloadData()
+                
             }catch let error {
                 print(error)
             }
@@ -336,4 +356,22 @@ extension CreateVideoViewController {
             }
         }
     }
+}
+
+extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return outputURLs.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: "CroppedVideoCollectionViewCell",
+        for: indexPath) as? CroppedVideoCollectionViewCell
+        else { return UICollectionViewCell() }
+        
+        cell.videoUrl = outputURLs[indexPath.row]
+        return cell
+    }
+    
+    
 }
