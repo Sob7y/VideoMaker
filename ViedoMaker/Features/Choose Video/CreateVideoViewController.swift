@@ -17,6 +17,7 @@ import Presentr
 class CreateVideoViewController: UIViewController {
     
     var videoPicker: VideoPicker!
+    @IBOutlet private weak  var audioRecordingView: AudioRecorderView!
     var playerController = AVPlayerViewController()
     var avplayer = AVPlayer()
     var videoUrl: URL?
@@ -25,6 +26,8 @@ class CreateVideoViewController: UIViewController {
     var videoPlaybackPosition: CGFloat = 0.0
     var asset: AVAsset!
     var numberOfCroppedVideos = 0
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
 
   //  @IBOutlet weak var videoView: VideoView!
     @IBOutlet private weak var videoPlayerView: UIView!
@@ -37,6 +40,8 @@ class CreateVideoViewController: UIViewController {
     @IBOutlet private weak var frameContainerView: UIView!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
+    @IBOutlet private weak  var recordButton: UIButton!
+    var audioPlayer : AVAudioPlayer!
     
     var videoTotalSeconds = 0.0
     var rangeSlider: RangeSlider! = nil
@@ -54,25 +59,12 @@ class CreateVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupAudioRecorder()
     }
     
-//    private func setupVideo() {
-//        self.videoView.contentMode = .scaleAspectFill
-//        self.videoView.player?.isMuted = true
-//    }
-    
-//    private func addCropper(_ url: URL) {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let cropView = storyBoard.instantiateViewController(withIdentifier: "CropViewController") as! CropViewController
-//        cropView.videoUrl = url
-//        let centerPoint = CGPoint(x: self.view.frame.origin.x + (UIScreen.main.bounds.width / 2), y: UIScreen.main.bounds.height - 130)
-//        presentr.presentationType = .custom(width: .full, height: .custom(size: 280),
-//                                            center: .custom(centerPoint: centerPoint))
-//        self.customPresentViewController(presentr, viewController: cropView, animated: true)
-//    }
-    
-    
+    func setupAudioRecorder() {
+        audioRecordingView.setupView()
+    }
 }
 
 //IBActions

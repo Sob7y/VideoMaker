@@ -77,28 +77,6 @@
                                                     <constraint firstItem="yCS-mP-UMP" firstAttribute="top" secondItem="LQD-2D-da3" secondAttribute="bottom" constant="5" id="lPj-EV-Kdl"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Eo9-7K-yLe">
-                                                <rect key="frame" x="20" y="400" width="374" height="50"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPw-XI-SZl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
-                                                        <state key="normal" image="ic_cut"/>
-                                                        <connections>
-                                                            <action selector="videoCutButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9zS-UW-M8w"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-qu-dRv">
-                                                        <rect key="frame" x="187" y="0.0" width="187" height="50"/>
-                                                        <state key="normal" image="ic_add_music"/>
-                                                        <connections>
-                                                            <action selector="addSoundCutButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pUK-dg-QpF"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="oEs-1c-hof"/>
-                                                </constraints>
-                                            </stackView>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dir-nk-p4H">
                                                 <rect key="frame" x="0.0" y="677" width="414" height="141"/>
                                                 <subviews>
@@ -241,20 +219,70 @@
                                                     <constraint firstAttribute="trailing" secondItem="3wm-Op-kWV" secondAttribute="trailing" constant="20" id="xcL-6y-TTc"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIb-FD-Tw0" customClass="AudioRecorderView" customModule="ViedoMaker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="586" width="414" height="83"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-vX-nBG">
+                                                        <rect key="frame" x="20" y="16.5" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="7Yt-kH-I6Z"/>
+                                                            <constraint firstAttribute="height" constant="50" id="dZr-cL-0XX"/>
+                                                        </constraints>
+                                                        <state key="normal" image="ic-record">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSy-pt-7VI">
+                                                        <rect key="frame" x="344" y="16.5" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="YCF-Wq-jwK"/>
+                                                            <constraint firstAttribute="width" constant="50" id="rZZ-Yy-dvj"/>
+                                                        </constraints>
+                                                        <state key="normal" image="ic-play">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="playRecording:" destination="tIb-FD-Tw0" eventType="touchUpInside" id="dnV-0M-Wk0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4z-yo-BB8">
+                                                        <rect key="frame" x="207" y="41.5" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="XSy-pt-7VI" firstAttribute="centerY" secondItem="tIb-FD-Tw0" secondAttribute="centerY" id="3qJ-rn-NZI"/>
+                                                    <constraint firstItem="V4z-yo-BB8" firstAttribute="centerY" secondItem="tIb-FD-Tw0" secondAttribute="centerY" id="WIc-se-9JL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XSy-pt-7VI" secondAttribute="trailing" constant="20" id="YLX-hU-M5F"/>
+                                                    <constraint firstAttribute="height" constant="83" id="a5p-Xk-FI6"/>
+                                                    <constraint firstItem="V4z-yo-BB8" firstAttribute="centerX" secondItem="tIb-FD-Tw0" secondAttribute="centerX" id="hBJ-I6-k6r"/>
+                                                    <constraint firstItem="8e8-vX-nBG" firstAttribute="leading" secondItem="tIb-FD-Tw0" secondAttribute="leading" constant="20" id="rMi-Fn-MTP"/>
+                                                    <constraint firstItem="8e8-vX-nBG" firstAttribute="centerY" secondItem="tIb-FD-Tw0" secondAttribute="centerY" id="uVP-s1-GgG"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="playButton" destination="XSy-pt-7VI" id="mDL-0v-nEZ"/>
+                                                    <outlet property="recordButton" destination="8e8-vX-nBG" id="Iht-Re-baU"/>
+                                                    <outlet property="recordingTimeLabel" destination="V4z-yo-BB8" id="fy8-8R-Ix1"/>
+                                                </connections>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="Gp8-cZ-CqQ" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" constant="20" id="14Z-se-b3l"/>
                                             <constraint firstAttribute="bottom" secondItem="Dir-nk-p4H" secondAttribute="bottom" id="83w-Yd-QfE"/>
+                                            <constraint firstItem="Dir-nk-p4H" firstAttribute="top" secondItem="tIb-FD-Tw0" secondAttribute="bottom" constant="8" id="JKB-g3-aHX"/>
                                             <constraint firstItem="1Ik-Ys-qUx" firstAttribute="top" secondItem="wMn-eC-Ii0" secondAttribute="top" constant="20" id="KDO-Co-69c"/>
+                                            <constraint firstAttribute="trailing" secondItem="tIb-FD-Tw0" secondAttribute="trailing" id="Kdv-Yu-syo"/>
                                             <constraint firstAttribute="trailing" secondItem="Dir-nk-p4H" secondAttribute="trailing" id="MBm-cd-bTa"/>
                                             <constraint firstItem="Gp8-cZ-CqQ" firstAttribute="top" secondItem="1Ik-Ys-qUx" secondAttribute="bottom" constant="16" id="Qw8-nr-e2q"/>
                                             <constraint firstItem="Dir-nk-p4H" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" id="a98-jc-55d"/>
                                             <constraint firstAttribute="trailing" secondItem="Gp8-cZ-CqQ" secondAttribute="trailing" constant="20" id="agM-so-6ib"/>
-                                            <constraint firstItem="Eo9-7K-yLe" firstAttribute="centerX" secondItem="1Ik-Ys-qUx" secondAttribute="centerX" id="c4K-15-VBj"/>
-                                            <constraint firstItem="Eo9-7K-yLe" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" constant="20" id="gQu-Oq-5Dr"/>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Eo9-7K-yLe" secondAttribute="trailing" constant="20" id="gkb-iH-Cu1"/>
-                                            <constraint firstItem="Eo9-7K-yLe" firstAttribute="top" secondItem="1Ik-Ys-qUx" secondAttribute="bottom" constant="80" id="k4A-oL-T5F"/>
+                                            <constraint firstItem="tIb-FD-Tw0" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" id="sF7-JH-nmZ"/>
                                             <constraint firstAttribute="trailing" secondItem="1Ik-Ys-qUx" secondAttribute="trailing" id="wXH-53-tfT"/>
                                             <constraint firstItem="1Ik-Ys-qUx" firstAttribute="leading" secondItem="wMn-eC-Ii0" secondAttribute="leading" id="xQ1-IA-See"/>
                                         </constraints>
@@ -282,6 +310,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="audioRecordingView" destination="tIb-FD-Tw0" id="D6C-b1-eGP"/>
                         <outlet property="endTimeLabel" destination="F0a-lE-e6o" id="uDU-F4-MQo"/>
                         <outlet property="frameContainerView" destination="3wm-Op-kWV" id="jmR-RU-4qO"/>
                         <outlet property="progressContainerView" destination="Gp8-cZ-CqQ" id="HfW-i1-9bP"/>
@@ -468,9 +497,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_add_music" width="50" height="50"/>
+        <image name="ic-play" width="50" height="50"/>
+        <image name="ic-record" width="64" height="64"/>
         <image name="ic_cancel" width="50" height="50"/>
-        <image name="ic_cut" width="50" height="50"/>
         <image name="ic_ok" width="50" height="50"/>
     </resources>
 </document>

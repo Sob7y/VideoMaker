@@ -24,6 +24,7 @@
 		39A557E123C614FB00493C82 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E023C614FB00493C82 /* UIView+Additions.swift */; };
 		39A557E323C6161D00493C82 /* VideoEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E223C6161D00493C82 /* VideoEditor.swift */; };
 		39A557E523C7246200493C82 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E423C7246200493C82 /* RangeSlider.swift */; };
+		39A557E823C93FA300493C82 /* AudioRecorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A557E723C93FA300493C82 /* AudioRecorderView.swift */; };
 		64BE401482308926EB386CD9 /* Pods_ViedoMaker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23090B0ABD4533994C4BCB91 /* Pods_ViedoMaker.framework */; };
 		86091B5CB3EC4CD815AC9B5D /* Pods_ViedoMakerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B80E7F3299DA185E0107CE5 /* Pods_ViedoMakerTests.framework */; };
 		CC65818BA6286E6CBDC9B4AB /* Pods_ViedoMaker_ViedoMakerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2398DFD8A7F24E8333D221F /* Pods_ViedoMaker_ViedoMakerUITests.framework */; };
@@ -72,6 +73,7 @@
 		39A557E023C614FB00493C82 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		39A557E223C6161D00493C82 /* VideoEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoEditor.swift; sourceTree = "<group>"; };
 		39A557E423C7246200493C82 /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
+		39A557E723C93FA300493C82 /* AudioRecorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderView.swift; sourceTree = "<group>"; };
 		4A95580EF6039D1F93BB3ED3 /* Pods-ViedoMaker-ViedoMakerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViedoMaker-ViedoMakerUITests.debug.xcconfig"; path = "Target Support Files/Pods-ViedoMaker-ViedoMakerUITests/Pods-ViedoMaker-ViedoMakerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B80E7F3299DA185E0107CE5 /* Pods_ViedoMakerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViedoMakerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2398DFD8A7F24E8333D221F /* Pods_ViedoMaker_ViedoMakerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViedoMaker_ViedoMakerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +215,7 @@
 			children = (
 				394CE95223C4CA5600C38156 /* CreateVideoViewController.swift */,
 				39A557D123C4DD8D00493C82 /* VideoPicker.swift */,
+				39A557E723C93FA300493C82 /* AudioRecorderView.swift */,
 				39A557E423C7246200493C82 /* RangeSlider.swift */,
 			);
 			path = "Choose Video";
@@ -514,6 +517,7 @@
 				39A557D223C4DD8D00493C82 /* VideoView.swift in Sources */,
 				39A557CD23C4D9A500493C82 /* AppManager.swift in Sources */,
 				39A557CC23C4D9A500493C82 /* Container.swift in Sources */,
+				39A557E823C93FA300493C82 /* AudioRecorderView.swift in Sources */,
 				39A557DA23C605F700493C82 /* CropViewController.swift in Sources */,
 				394CE95323C4CA5600C38156 /* CreateVideoViewController.swift in Sources */,
 				394CE92123C4C69A00C38156 /* SceneDelegate.swift in Sources */,
