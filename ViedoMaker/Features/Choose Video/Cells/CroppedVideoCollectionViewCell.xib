@@ -21,7 +21,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="120" id="Dkf-Ge-RkN"/>
-                            <constraint firstAttribute="width" constant="120" id="NOn-pa-kwR"/>
                         </constraints>
                     </view>
                 </subviews>

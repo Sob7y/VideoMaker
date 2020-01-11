@@ -26,8 +26,8 @@ class CreateVideoViewController: UIViewController {
     var asset: AVAsset!
     var numberOfCroppedVideos = 0
     var outputURLs: [URL] = []
-
-  //  @IBOutlet weak var videoView: VideoView!
+    
+    //  @IBOutlet weak var videoView: VideoView!
     @IBOutlet private weak var videoPlayerView: UIView!
     @IBOutlet private weak var videoPickerButton: UIButton!
     @IBOutlet private weak var progressView: UIProgressView!
@@ -39,6 +39,7 @@ class CreateVideoViewController: UIViewController {
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
     @IBOutlet private weak var croppedVideosCollectionView: UICollectionView!
+    @IBOutlet private weak var croppedCollectionViewHeightConstrain: NSLayoutConstraint!
     
     var videoTotalSeconds = 0.0
     var rangeSlider: RangeSlider! = nil
@@ -57,28 +58,37 @@ class CreateVideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCollectionViewCells()
+        
+        let manager = FileManager.default
+        
+        guard let documentDirectory = try? manager.url(for: .documentDirectory,
+                                                       in: .userDomainMask,
+                                                       appropriateFor: nil,
+                                                       create: true) else {return}
+        let outputURL = documentDirectory.appendingPathComponent("output")
+        _ = try? manager.removeItem(at: outputURL)
     }
     
     private func registerCollectionViewCells() {
         self.croppedVideosCollectionView.register(
-        UINib(nibName: "CroppedVideoCollectionViewCell", bundle: nil),
-        forCellWithReuseIdentifier: "CroppedVideoCollectionViewCell")
+            UINib(nibName: "CroppedVideoCollectionViewCell", bundle: nil),
+            forCellWithReuseIdentifier: "CroppedVideoCollectionViewCell")
     }
     
-//    private func setupVideo() {
-//        self.videoView.contentMode = .scaleAspectFill
-//        self.videoView.player?.isMuted = true
-//    }
+    //    private func setupVideo() {
+    //        self.videoView.contentMode = .scaleAspectFill
+    //        self.videoView.player?.isMuted = true
+    //    }
     
-//    private func addCropper(_ url: URL) {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let cropView = storyBoard.instantiateViewController(withIdentifier: "CropViewController") as! CropViewController
-//        cropView.videoUrl = url
-//        let centerPoint = CGPoint(x: self.view.frame.origin.x + (UIScreen.main.bounds.width / 2), y: UIScreen.main.bounds.height - 130)
-//        presentr.presentationType = .custom(width: .full, height: .custom(size: 280),
-//                                            center: .custom(centerPoint: centerPoint))
-//        self.customPresentViewController(presentr, viewController: cropView, animated: true)
-//    }
+    //    private func addCropper(_ url: URL) {
+    //        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+    //        let cropView = storyBoard.instantiateViewController(withIdentifier: "CropViewController") as! CropViewController
+    //        cropView.videoUrl = url
+    //        let centerPoint = CGPoint(x: self.view.frame.origin.x + (UIScreen.main.bounds.width / 2), y: UIScreen.main.bounds.height - 130)
+    //        presentr.presentationType = .custom(width: .full, height: .custom(size: 280),
+    //                                            center: .custom(centerPoint: centerPoint))
+    //        self.customPresentViewController(presentr, viewController: cropView, animated: true)
+    //    }
     
     
 }
@@ -91,9 +101,9 @@ extension CreateVideoViewController {
     }
     
     @IBAction func videoCutButtonTouched(_ sender: UIButton) {
-//        if let url = videoUrl {
-//            addCropper(url)
-//        }
+        //        if let url = videoUrl {
+        //            addCropper(url)
+        //        }
     }
     
     @IBAction func addSoundCutButtonTouched(_ sender: UIButton) {
@@ -140,14 +150,14 @@ extension CreateVideoViewController: VideoPickerDelegate {
         self.avplayer.play()
     }
     
-//    //MARK: add Video to View
-//     func addVideo(videoUrl: URL, to view: UIView) {
-//         playerController.player = self.avplayer
-//        // self.addChild(playerController)
-//         view.addSubview(playerController.view)
-//         playerController.view.frame = view.bounds
-//         playerController.showsPlaybackControls = true
-//     }
+    //    //MARK: add Video to View
+    //     func addVideo(videoUrl: URL, to view: UIView) {
+    //         playerController.player = self.avplayer
+    //        // self.addChild(playerController)
+    //         view.addSubview(playerController.view)
+    //         playerController.view.frame = view.bounds
+    //         playerController.showsPlaybackControls = true
+    //     }
     
     func setVideoDuration(_ url: URL) {
         let asset = AVAsset(url: url)
@@ -284,6 +294,7 @@ extension CreateVideoViewController {
 extension CreateVideoViewController {
     //Trim Video Function
     func cropVideo(sourceURL1: URL, startTime:Float, endTime:Float) {
+        
         let manager = FileManager.default
         
         guard let documentDirectory = try? manager.url(for: .documentDirectory,
@@ -308,14 +319,16 @@ extension CreateVideoViewController {
                 numberOfCroppedVideos += 1
                 outputURL = outputURL.appendingPathComponent("\(numberOfCroppedVideos).mp4")
                 outputURLs.append(outputURL)
-                self.croppedVideosCollectionView.reloadData()
+//                 self.croppedVideosCollectionView.reloadData()
+                
+                
                 
             }catch let error {
                 print(error)
             }
             
             //Remove existing file
-         //   _ = try? manager.removeItem(at: outputURL)
+            //   _ = try? manager.removeItem(at: outputURL)
             
             guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return}
             exportSession.outputURL = outputURL
@@ -330,7 +343,15 @@ extension CreateVideoViewController {
                 switch exportSession.status {
                 case .completed:
                     print("exported at \(outputURL)")
-                    self.saveToCameraRoll(URL: outputURL as NSURL?)
+                    DispatchQueue.main.async {
+                        
+                        self.croppedVideosCollectionView.reloadData()
+                        let numberOfItems = self.croppedVideosCollectionView.numberOfItems(inSection: 0)
+                        let cellsHeight = (numberOfItems * 120 )
+                        let spacingHeight = ((numberOfItems - 1) * 10)
+                        self.croppedCollectionViewHeightConstrain.constant = CGFloat(cellsHeight + spacingHeight)
+                    }
+           //         self.saveToCameraRoll(URL: outputURL as NSURL?)
                 case .failed:
                     print("failed \(exportSession.error)")
                     
@@ -358,19 +379,24 @@ extension CreateVideoViewController {
     }
 }
 
-extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return outputURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: "CroppedVideoCollectionViewCell",
-        for: indexPath) as? CroppedVideoCollectionViewCell
-        else { return UICollectionViewCell() }
+            withReuseIdentifier: "CroppedVideoCollectionViewCell",
+            for: indexPath) as? CroppedVideoCollectionViewCell
+            else { return UICollectionViewCell() }
         
         cell.videoUrl = outputURLs[indexPath.row]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        return CGSize(width: CGFloat(width), height: CGFloat(100))
     }
     
     

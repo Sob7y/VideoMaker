@@ -18,6 +18,7 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var view: UIView!
     
     var avplayer = AVPlayer()
+    var playerController = AVPlayerViewController()
     var videoUrl: URL? {
         didSet {
             if let videoUrl = videoUrl{
@@ -32,7 +33,6 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
     
     //MARK: add Video to View
      private func addVideo(videoUrl: URL) {
-       let playerController = AVPlayerViewController()
         self.avplayer = AVPlayer(url: videoUrl)
         playerController.player = self.avplayer
         self.view.addSubview(playerController.view)
