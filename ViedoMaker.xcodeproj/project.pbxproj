@@ -177,6 +177,7 @@
 		394CE94F23C4C9F200C38156 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				39A557E923CA2D7D00493C82 /* Record */,
 				39A557CF23C4DD7700493C82 /* Choose Video */,
 			);
 			path = Features;
@@ -215,7 +216,6 @@
 			children = (
 				394CE95223C4CA5600C38156 /* CreateVideoViewController.swift */,
 				39A557D123C4DD8D00493C82 /* VideoPicker.swift */,
-				39A557E723C93FA300493C82 /* AudioRecorderView.swift */,
 				39A557E423C7246200493C82 /* RangeSlider.swift */,
 			);
 			path = "Choose Video";
@@ -245,6 +245,14 @@
 				39A557E223C6161D00493C82 /* VideoEditor.swift */,
 			);
 			path = Spikes;
+			sourceTree = "<group>";
+		};
+		39A557E923CA2D7D00493C82 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				39A557E723C93FA300493C82 /* AudioRecorderView.swift */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		55DA88919FCEFDC2FD4CE79F /* Frameworks */ = {

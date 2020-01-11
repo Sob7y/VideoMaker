@@ -10,10 +10,15 @@ import Foundation
 import UIKit
 import AVFoundation
 
+protocol AudioRecorderDelegate: class {
+    func audioRecordingFinished(_ url: URL)
+}
+
 open class AudioRecorderView: UIView {
     
     @IBOutlet private weak  var recordButton: UIButton!
     @IBOutlet private weak  var playButton: UIButton!
+    @IBOutlet private weak  var mergeButton: UIButton!
     @IBOutlet private weak  var recordingTimeLabel: UILabel!
     
     var audioPlayer : AVAudioPlayer!
@@ -23,6 +28,8 @@ open class AudioRecorderView: UIView {
     var isAudioRecordingGranted: Bool!
     var isRecording = false
     var isPlaying = false
+    
+    weak var delegate: AudioRecorderDelegate?
     
     func setupView() {
         check_record_permission()
@@ -211,6 +218,7 @@ extension AudioRecorderView: AVAudioRecorderDelegate {
         } else {
             finishRecording(success: true)
         }
+        delegate?.audioRecordingFinished(getFileUrl())
     }
 }
 

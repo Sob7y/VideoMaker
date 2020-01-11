@@ -21,6 +21,7 @@ class CreateVideoViewController: UIViewController {
     var playerController = AVPlayerViewController()
     var avplayer = AVPlayer()
     var videoUrl: URL?
+    var audioUrl: URL?
     var thumbTime: CMTime!
     var thumbtimeSeconds: Int!
     var videoPlaybackPosition: CGFloat = 0.0
@@ -64,6 +65,7 @@ class CreateVideoViewController: UIViewController {
     
     func setupAudioRecorder() {
         audioRecordingView.setupView()
+        audioRecordingView.delegate = self
     }
 }
 
@@ -143,6 +145,7 @@ extension CreateVideoViewController: VideoPickerDelegate {
     }
 }
 
+//Setup Video
 extension CreateVideoViewController {
     //MARK: Create video Image Frames
     func createImageFramesforCrop(strUrl : URL) {
@@ -256,6 +259,7 @@ extension CreateVideoViewController {
     }
 }
 
+//Crop Video
 extension CreateVideoViewController {
     //Trim Video Function
     func cropVideo(sourceURL1: URL?, startTime:Float, endTime:Float) {
@@ -325,6 +329,27 @@ extension CreateVideoViewController {
                 let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(defaultAction)
                 self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+//Audio Recorder Delegate
+extension CreateVideoViewController: AudioRecorderDelegate {
+    func audioRecordingFinished(_ url: URL) {
+        self.audioUrl = url
+    }
+}
+
+//Merge Audio With Video
+extension CreateVideoViewController {
+    @IBAction func mergeAudioWithVideo() {
+        let videoEditor = OptiVideoEditor()
+        if let videoUrl = videoUrl, let audioUrl = audioUrl {
+            videoEditor.mergeVideoWithAudio(videoUrl: videoUrl, audioUrl: audioUrl, success: { (url) in
+                
+            }) { (error) in
+                
             }
         }
     }
