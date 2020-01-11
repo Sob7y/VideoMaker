@@ -23,6 +23,7 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
         didSet {
             if let videoUrl = videoUrl{
                 addVideo(videoUrl: videoUrl)
+                setupCell()
             }
         }
     }
@@ -38,6 +39,10 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
         self.view.addSubview(playerController.view)
         playerController.view.frame = self.view.bounds
         playerController.showsPlaybackControls = true
+    }
+    
+    private func setupCell() {
+       // audioImageView.image = UIImage(named: "ic_record")
     }
 
 }
