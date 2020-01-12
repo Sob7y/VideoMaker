@@ -352,6 +352,11 @@ class OptiVideoEditor: NSObject {
         }
     }
     
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
 
     func mergeTwoVideosArry(arrayVideos:[AVAsset], success: @escaping ((URL) -> Void), failure: @escaping ((String?) -> Void)) {
         
