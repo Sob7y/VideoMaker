@@ -12,7 +12,7 @@ import MobileCoreServices
 import AVKit
 import Photos
 
-class OptiVideoEditor: NSObject {
+class VideoEditor: NSObject {
     
     var defaultSize = CGSize(width: 1920, height: 1080)
     

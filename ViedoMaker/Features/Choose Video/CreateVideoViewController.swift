@@ -344,11 +344,9 @@ extension CreateVideoViewController: AudioRecorderDelegate {
 //Merge Audio With Video
 extension CreateVideoViewController {
     @IBAction func mergeAudioWithVideo() {
-        let videoEditor = OptiVideoEditor()
+        let videoEditor = VideoEditor()
         if let videoUrl = videoUrl, let audioUrl = audioUrl {
             videoEditor.mergeVideoWithAudio(videoUrl: videoUrl, audioUrl: audioUrl, success: { (url) in
-//                let filename = "MergeVideowithAudio.m4v"
-//                let filePath = videoEditor.getDocumentsDirectory().appendingPathComponent(filename)
                 DispatchQueue.main.async {
                     self.saveToCameraRoll(URL: url as NSURL)
                     self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
@@ -358,6 +356,5 @@ extension CreateVideoViewController {
             }
         }
     }
-    
     
 }
