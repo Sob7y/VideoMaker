@@ -20,33 +20,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="318" height="120"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dp-hh-h1r">
-                                <rect key="frame" x="0.0" y="0.0" width="182" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="126" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="03t-Lh-42C"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjA-Gq-utJ" customClass="AudioRecorderView" customModule="ViedoMaker" customModuleProvider="target">
-                                <rect key="frame" x="182" y="0.0" width="136" height="120"/>
+                                <rect key="frame" x="126" y="0.0" width="192" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eG-JI-d8q">
-                                        <rect key="frame" x="8" y="12" width="50" height="50"/>
+                                        <rect key="frame" x="16" y="12" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="ifx-4f-yJZ"/>
                                             <constraint firstAttribute="height" constant="50" id="nwr-hf-GXK"/>
                                         </constraints>
-                                        <state key="normal" image="ic-record">
+                                        <state key="normal" image="ic_record">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jby-ff-g2i">
-                                        <rect key="frame" x="78" y="12" width="50" height="50"/>
+                                        <rect key="frame" x="126" y="12" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="KEZ-eI-A4W"/>
                                             <constraint firstAttribute="height" constant="50" id="bHH-S9-Fjb"/>
                                         </constraints>
-                                        <state key="normal" image="ic-play">
+                                        <state key="normal" image="ic_play">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -55,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYh-oa-Quo">
-                                        <rect key="frame" x="36.5" y="78" width="63" height="38"/>
+                                        <rect key="frame" x="64.5" y="78" width="63" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="63" id="FtT-tc-4u4"/>
                                             <constraint firstAttribute="height" constant="38" id="Tq0-qJ-jMU"/>
@@ -70,7 +70,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4t-MX-WVe">
-                                        <rect key="frame" x="68" y="68" width="0.0" height="0.0"/>
+                                        <rect key="frame" x="96" y="68" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -79,14 +79,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="RYh-oa-Quo" secondAttribute="bottom" constant="4" id="4bB-eN-2cz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jby-ff-g2i" secondAttribute="trailing" constant="8" id="E9W-9J-g75"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jby-ff-g2i" secondAttribute="trailing" constant="16" id="E9W-9J-g75"/>
                                     <constraint firstItem="O4t-MX-WVe" firstAttribute="centerY" secondItem="DjA-Gq-utJ" secondAttribute="centerY" constant="8" id="JiT-rZ-SgO"/>
-                                    <constraint firstItem="Jby-ff-g2i" firstAttribute="leading" secondItem="1eG-JI-d8q" secondAttribute="trailing" constant="20" id="KPl-gf-lqE"/>
+                                    <constraint firstItem="Jby-ff-g2i" firstAttribute="leading" secondItem="1eG-JI-d8q" secondAttribute="trailing" constant="60" id="KPl-gf-lqE"/>
                                     <constraint firstItem="1eG-JI-d8q" firstAttribute="top" secondItem="DjA-Gq-utJ" secondAttribute="top" constant="12" id="Zoj-rK-za3"/>
                                     <constraint firstItem="Jby-ff-g2i" firstAttribute="centerY" secondItem="1eG-JI-d8q" secondAttribute="centerY" id="a6g-wc-x1R"/>
                                     <constraint firstItem="RYh-oa-Quo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O4t-MX-WVe" secondAttribute="bottom" constant="4" id="cI9-Ha-zuw"/>
                                     <constraint firstItem="RYh-oa-Quo" firstAttribute="centerX" secondItem="DjA-Gq-utJ" secondAttribute="centerX" id="h0G-3e-vB8"/>
-                                    <constraint firstItem="1eG-JI-d8q" firstAttribute="leading" secondItem="DjA-Gq-utJ" secondAttribute="leading" constant="8" id="meP-Kd-G60"/>
+                                    <constraint firstItem="1eG-JI-d8q" firstAttribute="leading" secondItem="DjA-Gq-utJ" secondAttribute="leading" constant="16" id="meP-Kd-G60"/>
                                     <constraint firstItem="O4t-MX-WVe" firstAttribute="centerX" secondItem="DjA-Gq-utJ" secondAttribute="centerX" id="q75-EL-Y15"/>
                                 </constraints>
                                 <connections>
@@ -126,7 +126,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic-play" width="16" height="16"/>
-        <image name="ic-record" width="16" height="16"/>
+        <image name="ic_play" width="25" height="25"/>
+        <image name="ic_record" width="32" height="32"/>
     </resources>
 </document>

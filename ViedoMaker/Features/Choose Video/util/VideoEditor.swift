@@ -310,8 +310,8 @@ class VideoEditor: NSObject {
         mutableVideoComposition.renderSize = CGSize(width: 1920, height: 1080) //(720, 480), (1920,1080)
         
         //Create Directory path for Save
-        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        var outputURL = documentDirectory.appendingPathComponent("MergeVideowithAudio")
+       // let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        var outputURL = videoUrl //documentDirectory.appendingPathComponent("MergeVideowithAudio")
         do {
             try FileManager.default.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
             outputURL = outputURL.appendingPathComponent("\(outputURL.lastPathComponent).m4v")

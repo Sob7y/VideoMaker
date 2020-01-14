@@ -26,6 +26,7 @@ class CreateVideoViewController: UIViewController {
     var asset: AVAsset!
     var numberOfCroppedVideos = 0
     var outputURLs: [URL] = []
+    var audioURLs: [URL] = []
     
     //  @IBOutlet weak var videoView: VideoView!
     @IBOutlet private weak var videoPlayerView: UIView!
@@ -319,6 +320,7 @@ extension CreateVideoViewController {
                 numberOfCroppedVideos += 1
                 outputURL = outputURL.appendingPathComponent("\(numberOfCroppedVideos).mp4")
                 outputURLs.append(outputURL)
+                audioURLs.append(outputURL)
 //                 self.croppedVideosCollectionView.reloadData()
                 
                 
@@ -390,6 +392,7 @@ extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewD
             for: indexPath) as? CroppedVideoCollectionViewCell
             else { return UICollectionViewCell() }
         cell.index = indexPath.row
+        cell.audioUrl = audioURLs[indexPath.row]
         cell.videoUrl = outputURLs[indexPath.row]
         return cell
     }
@@ -401,6 +404,10 @@ extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 extension CreateVideoViewController: UpdateVideoUrlDelegate {
+    func saveAudioUrl(url: URL, index: Int) {
+        audioURLs[index] = url
+    }
+
     func updateVideoUrl(url: URL, index: Int) {
         outputURLs[index] = url
     }

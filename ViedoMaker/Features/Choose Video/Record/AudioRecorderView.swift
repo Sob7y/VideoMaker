@@ -30,6 +30,11 @@ open class AudioRecorderView: UIView {
     var isPlaying = false
     
     weak var delegate: AudioRecorderDelegate?
+    var index: Int? {
+        didSet {
+            print(index)
+        }
+    }
     
     func setupView() {
         check_record_permission()
@@ -78,8 +83,14 @@ open class AudioRecorderView: UIView {
         return documentsDirectory
     }
     
+
+    
     func getFileUrl() -> URL {
-        let filename = "myRecording.m4a"
+        
+        var filename = "myRecording.m4a"
+        if let index = index {
+            filename = "\(index + 1).m4a"
+        }
         let filePath = getDocumentsDirectory().appendingPathComponent(filename)
         return filePath
     }
@@ -110,12 +121,12 @@ open class AudioRecorderView: UIView {
     @objc func longPress(_ longPressGestureRecognizer: UILongPressGestureRecognizer){
         if longPressGestureRecognizer.state == .ended {
             print("long press ended")
-            let recordImage = UIImage(named: "ic-record")
+            let recordImage = UIImage(named: "ic_record")
             recordButton.setImage(recordImage, for: .normal)
             self.finishRecording(success: true)
         }
         if longPressGestureRecognizer.state == .began {
-            let recordingTapImage = UIImage(named: "ic-record")
+            let recordingTapImage = UIImage(named: "ic_record")
             recordButton.setImage(recordingTapImage, for: .normal)
             self.startRecording()
             
@@ -123,7 +134,11 @@ open class AudioRecorderView: UIView {
     }
     
     func startRecording() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("myRecording.m4a")
+        var filename = "myRecording.m4a"
+        if let index = index {
+            filename = "\(index + 1).m4a"
+        }
+        let audioFilename = getDocumentsDirectory().appendingPathComponent(filename)
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -178,14 +193,14 @@ extension AudioRecorderView {
             audioPlayer.stop()
             recordButton.isEnabled = true
 //            playButton.setTitle("Play", for: .normal)
-            let playImage = UIImage(named: "ic-play")
+            let playImage = UIImage(named: "ic_play")
             playButton.setImage(playImage, for: .normal)
             isPlaying = false
         } else {
             if FileManager.default.fileExists(atPath: getFileUrl().path) {
                 recordButton.isEnabled = false
 //                playButton.setTitle("pause", for: .normal)
-                let playImage = UIImage(named: "ic-pause")
+                let playImage = UIImage(named: "ic_pause")
                 playButton.setImage(playImage, for: .normal)
                 preparePlay()
                 audioPlayer.play()

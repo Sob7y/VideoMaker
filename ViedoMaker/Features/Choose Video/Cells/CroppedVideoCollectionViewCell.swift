@@ -16,6 +16,7 @@ import MobileCoreServices
 
 protocol UpdateVideoUrlDelegate: class {
     func updateVideoUrl(url: URL, index: Int)
+    func saveAudioUrl(url: URL, index: Int)
 }
 
 class CroppedVideoCollectionViewCell: UICollectionViewCell {
@@ -37,18 +38,21 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
                 asset = AVURLAsset.init(url: videoUrl as URL)
                 addVideo(videoUrl: videoUrl)
                 setupCell()
+                setupAudioRecorder()
             }
         }
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupAudioRecorder()
+        
         // Initialization code
     }
     
     func setupAudioRecorder() {
+        audioRecordingView.index = index
         audioRecordingView.setupView()
         audioRecordingView.delegate = self
+        
     }
     
     //MARK: add Video to View
@@ -69,6 +73,10 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
 extension CroppedVideoCollectionViewCell: AudioRecorderDelegate {
     func audioRecordingFinished(_ url: URL) {
         self.audioUrl = url
+        
+        if let index = index {
+            self.delegate?.saveAudioUrl(url: url, index: index)
+        }
     }
 }
 
@@ -81,6 +89,7 @@ extension CroppedVideoCollectionViewCell {
                     self.videoUrl = url
                     if let index = self.index {
                         self.delegate?.updateVideoUrl(url: url, index: index)
+                      //  self.removeFile(at: audioUrl)
                     }
                   //  self.saveToCameraRoll(URL: url as NSURL)
                     self.exportVideo(outputURL: videoUrl)
@@ -114,5 +123,11 @@ extension CroppedVideoCollectionViewCell {
              }
          }
     }
+//    private func removeFile(at url: URL) {
+//        let manager = FileManager.default
+//        if let audioUrl = audioUrl {
+//            _ = try? manager.removeItem(at: audioUrl)
+//        }
+//    }
     
 }
