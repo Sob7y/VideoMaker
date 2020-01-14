@@ -30,11 +30,7 @@ open class AudioRecorderView: UIView {
     var isPlaying = false
     
     weak var delegate: AudioRecorderDelegate?
-    var index: Int? {
-        didSet {
-            print(index)
-        }
-    }
+    var index: Int?
     
     func setupView() {
         check_record_permission()
@@ -193,7 +189,7 @@ extension AudioRecorderView {
             audioPlayer.stop()
             recordButton.isEnabled = true
 //            playButton.setTitle("Play", for: .normal)
-            let playImage = UIImage(named: "ic_play")
+            let playImage = UIImage(named: "ic_pause")
             playButton.setImage(playImage, for: .normal)
             isPlaying = false
         } else {
@@ -220,7 +216,7 @@ extension AudioRecorderView: AVAudioPlayerDelegate {
     private func setPlayerOff() {
         audioPlayer.stop()
         isPlaying = false
-        let playImage = UIImage(named: "ic-play")
+        let playImage = UIImage(named: "ic_pause")
         playButton.setImage(playImage, for: .normal)
         recordButton.isEnabled = true
     }

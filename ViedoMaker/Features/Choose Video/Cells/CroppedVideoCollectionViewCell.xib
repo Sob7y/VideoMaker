@@ -40,20 +40,6 @@
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jby-ff-g2i">
-                                        <rect key="frame" x="126" y="12" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="KEZ-eI-A4W"/>
-                                            <constraint firstAttribute="height" constant="50" id="bHH-S9-Fjb"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_play">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="playRecording:" destination="DjA-Gq-utJ" eventType="touchUpInside" id="eaM-N8-edY"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYh-oa-Quo">
                                         <rect key="frame" x="64.5" y="78" width="63" height="38"/>
                                         <constraints>
@@ -75,23 +61,34 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCa-YC-Tzd">
+                                        <rect key="frame" x="126" y="12" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Gv2-AL-pnA"/>
+                                            <constraint firstAttribute="width" constant="50" id="VVC-Pd-bOY"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_pause"/>
+                                        <connections>
+                                            <action selector="playRecording:" destination="DjA-Gq-utJ" eventType="touchUpInside" id="zc1-99-YLa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="RYh-oa-Quo" secondAttribute="bottom" constant="4" id="4bB-eN-2cz"/>
-                                    <constraint firstAttribute="trailing" secondItem="Jby-ff-g2i" secondAttribute="trailing" constant="16" id="E9W-9J-g75"/>
+                                    <constraint firstItem="fCa-YC-Tzd" firstAttribute="centerY" secondItem="1eG-JI-d8q" secondAttribute="centerY" id="56u-QO-bVx"/>
                                     <constraint firstItem="O4t-MX-WVe" firstAttribute="centerY" secondItem="DjA-Gq-utJ" secondAttribute="centerY" constant="8" id="JiT-rZ-SgO"/>
-                                    <constraint firstItem="Jby-ff-g2i" firstAttribute="leading" secondItem="1eG-JI-d8q" secondAttribute="trailing" constant="60" id="KPl-gf-lqE"/>
+                                    <constraint firstAttribute="trailing" secondItem="fCa-YC-Tzd" secondAttribute="trailing" constant="16" id="V1x-rV-CUD"/>
                                     <constraint firstItem="1eG-JI-d8q" firstAttribute="top" secondItem="DjA-Gq-utJ" secondAttribute="top" constant="12" id="Zoj-rK-za3"/>
-                                    <constraint firstItem="Jby-ff-g2i" firstAttribute="centerY" secondItem="1eG-JI-d8q" secondAttribute="centerY" id="a6g-wc-x1R"/>
                                     <constraint firstItem="RYh-oa-Quo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O4t-MX-WVe" secondAttribute="bottom" constant="4" id="cI9-Ha-zuw"/>
+                                    <constraint firstItem="fCa-YC-Tzd" firstAttribute="leading" secondItem="1eG-JI-d8q" secondAttribute="trailing" constant="60" id="fYN-VH-jld"/>
                                     <constraint firstItem="RYh-oa-Quo" firstAttribute="centerX" secondItem="DjA-Gq-utJ" secondAttribute="centerX" id="h0G-3e-vB8"/>
                                     <constraint firstItem="1eG-JI-d8q" firstAttribute="leading" secondItem="DjA-Gq-utJ" secondAttribute="leading" constant="16" id="meP-Kd-G60"/>
                                     <constraint firstItem="O4t-MX-WVe" firstAttribute="centerX" secondItem="DjA-Gq-utJ" secondAttribute="centerX" id="q75-EL-Y15"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="mergeButton" destination="RYh-oa-Quo" id="5Vg-hx-XV3"/>
-                                    <outlet property="playButton" destination="Jby-ff-g2i" id="d37-4E-Wp1"/>
+                                    <outlet property="playButton" destination="fCa-YC-Tzd" id="0JT-3Q-xBo"/>
                                     <outlet property="recordButton" destination="1eG-JI-d8q" id="wHj-J2-BRB"/>
                                     <outlet property="recordingTimeLabel" destination="O4t-MX-WVe" id="87v-YW-xyk"/>
                                 </connections>
@@ -126,7 +123,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_play" width="25" height="25"/>
-        <image name="ic_record" width="32" height="32"/>
+        <image name="ic_pause" width="64" height="64"/>
+        <image name="ic_record" width="64" height="64"/>
     </resources>
 </document>
