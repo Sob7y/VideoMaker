@@ -389,7 +389,7 @@ extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewD
             withReuseIdentifier: "CroppedVideoCollectionViewCell",
             for: indexPath) as? CroppedVideoCollectionViewCell
             else { return UICollectionViewCell() }
-        
+        cell.index = indexPath.row
         cell.videoUrl = outputURLs[indexPath.row]
         return cell
     }
@@ -398,6 +398,10 @@ extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewD
         let width = collectionView.frame.width
         return CGSize(width: CGFloat(width), height: CGFloat(100))
     }
-    
-    
+}
+
+extension CreateVideoViewController: UpdateVideoUrlDelegate {
+    func updateVideoUrl(url: URL, index: Int) {
+        outputURLs[index] = url
+    }
 }
