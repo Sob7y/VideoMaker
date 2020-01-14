@@ -12,13 +12,19 @@ import AVFoundation
 import Photos
 import MediaPlayer
 import Presentr
+import MobileCoreServices
+
 
 class CroppedVideoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var view: UIView!
-    
+    @IBOutlet private weak  var audioRecordingView: AudioRecorderView!
+
+    var recordingSession: AVAudioSession!
+    var audioRecorder: AVAudioRecorder!
     var avplayer = AVPlayer()
     var playerController = AVPlayerViewController()
+    var audioUrl: URL?
     var videoUrl: URL? {
         didSet {
             if let videoUrl = videoUrl{
@@ -29,7 +35,13 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupAudioRecorder()
         // Initialization code
+    }
+    
+    func setupAudioRecorder() {
+        audioRecordingView.setupView()
+        audioRecordingView.delegate = self
     }
     
     //MARK: add Video to View
@@ -45,4 +57,27 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
        // audioImageView.image = UIImage(named: "ic_record")
     }
 
+}
+
+extension CroppedVideoCollectionViewCell: AudioRecorderDelegate {
+    func audioRecordingFinished(_ url: URL) {
+        self.audioUrl = url
+    }
+}
+
+extension CroppedVideoCollectionViewCell {
+    @IBAction func mergeAudioWithVideo() {
+        let videoEditor = VideoEditor()
+        if let videoUrl = videoUrl, let audioUrl = audioUrl {
+            videoEditor.mergeVideoWithAudio(videoUrl: videoUrl, audioUrl: audioUrl, success: { (url) in
+                DispatchQueue.main.async {
+                    self.saveToCameraRoll(URL: url as NSURL)
+                    self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
+                }
+            }) { (error) in
+                
+            }
+        }
+    }
+    
 }
