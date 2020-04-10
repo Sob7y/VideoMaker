@@ -9,51 +9,35 @@
 import UIKit
 import AVKit
 import AVFoundation
-import Photos
 import MediaPlayer
-import Presentr
-import MobileCoreServices
-
-protocol UpdateVideoUrlDelegate: class {
-    func updateVideoUrl(url: URL, index: Int)
-    func saveAudioUrl(url: URL, index: Int)
-}
 
 class CroppedVideoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var view: UIView!
     @IBOutlet private weak  var audioRecordingView: AudioRecorderView!
 
-    weak var delegate: UpdateVideoUrlDelegate?
-    var recordingSession: AVAudioSession!
-    var audioRecorder: AVAudioRecorder!
+//    weak var delegate: UpdateVideoUrlDelegate?
+
     var asset: AVAsset!
-    var index: Int?
     var avplayer = AVPlayer()
     var playerController = AVPlayerViewController()
-    var audioUrl: URL?
+
     var videoUrl: URL? {
         didSet {
             if let videoUrl = videoUrl{
                 asset = AVURLAsset.init(url: videoUrl as URL)
                 addVideo(videoUrl: videoUrl)
                 setupCell()
-                setupAudioRecorder()
             }
         }
     }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Initialization code
     }
     
-    func setupAudioRecorder() {
-        audioRecordingView.index = index
-        audioRecordingView.setupView()
-        audioRecordingView.delegate = self
-        
-    }
     
     //MARK: add Video to View
      private func addVideo(videoUrl: URL) {
@@ -67,67 +51,4 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
     private func setupCell() {
        // audioImageView.image = UIImage(named: "ic_record")
     }
-
-}
-
-extension CroppedVideoCollectionViewCell: AudioRecorderDelegate {
-    func audioRecordingFinished(_ url: URL) {
-        self.audioUrl = url
-        
-        if let index = index {
-            self.delegate?.saveAudioUrl(url: url, index: index)
-        }
-    }
-}
-
-extension CroppedVideoCollectionViewCell {
-    @IBAction func mergeAudioWithVideo() {
-        let videoEditor = VideoEditor()
-        if let videoUrl = videoUrl, let audioUrl = audioUrl {
-            videoEditor.mergeVideoWithAudio(videoUrl: videoUrl, audioUrl: audioUrl, success: { (url) in
-                DispatchQueue.main.async {
-                    self.videoUrl = url
-                    if let index = self.index {
-                        self.delegate?.updateVideoUrl(url: url, index: index)
-                      //  self.removeFile(at: audioUrl)
-                    }
-                  //  self.saveToCameraRoll(URL: url as NSURL)
-                    self.exportVideo(outputURL: videoUrl)
-                    //self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
-                    self.addVideo(videoUrl: videoUrl)
-                }
-            }) { (error) in
-                
-            }
-        }
-    }
-    
-    private func exportVideo(outputURL: URL) {
-        guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return}
-        exportSession.outputURL = outputURL
-        exportSession.outputFileType = AVFileType.mp4
-        
-         exportSession.exportAsynchronously{
-             switch exportSession.status {
-             case .completed:
-                 print("exported at \(outputURL)")
-
-        //         self.saveToCameraRoll(URL: outputURL as NSURL?)
-             case .failed:
-                 print("failed \(exportSession.error)")
-                 
-             case .cancelled:
-                 print("cancelled \(exportSession.error)")
-                 
-             default: break
-             }
-         }
-    }
-//    private func removeFile(at url: URL) {
-//        let manager = FileManager.default
-//        if let audioUrl = audioUrl {
-//            _ = try? manager.removeItem(at: audioUrl)
-//        }
-//    }
-    
 }
