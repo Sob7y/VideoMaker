@@ -5,7 +5,7 @@ DEPENDENCIES:
   - Presentr
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Presentr
 
 SPEC CHECKSUMS:
@@ -13,4 +13,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e558d39ebaa5e373bde3951f46abb3a8de1c3843
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1
