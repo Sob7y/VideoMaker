@@ -23,8 +23,7 @@ class AppManager: NSObject {
     
     static func initWindow() {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = Container.getLoginScreen()
-        vc.view.backgroundColor = .blue
+        let vc = Container.Controllers.createCropOriginalController()
         window.rootViewController = vc
         window.makeKeyAndVisible()
         self.shared.window = window
@@ -32,8 +31,7 @@ class AppManager: NSObject {
     
     static func initSceneWindow(_ windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
-        let vc = Container.getLoginScreen()
-        vc.view.backgroundColor = .red
+          let vc = Container.Controllers.createCropOriginalController()
         window.rootViewController = vc
         window.makeKeyAndVisible()
         self.shared.window = window
