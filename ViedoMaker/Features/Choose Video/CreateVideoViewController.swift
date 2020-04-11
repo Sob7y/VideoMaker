@@ -29,18 +29,17 @@ class CreateVideoViewController: UIViewController {
     var croppedVideos: [VideoModel] = []
     
     //  @IBOutlet weak var videoView: VideoView!
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var videoPlayerView: UIView!
     @IBOutlet private weak var videoPickerButton: UIButton!
-    @IBOutlet private weak var progressView: UIProgressView!
-    @IBOutlet private weak var progressContainerView: UIView!
-    
     @IBOutlet private weak var videoCroppingContainerView: UIView!
     @IBOutlet private weak var videoFramesView: UIView!
     @IBOutlet private weak var frameContainerView: UIView!
     @IBOutlet private weak var startTimeLabel: UILabel!
     @IBOutlet private weak var endTimeLabel: UILabel!
-    @IBOutlet private weak var croppedVideosCollectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var croppedCollectionViewHeightConstrain: NSLayoutConstraint!
+    @IBOutlet private weak var scrollSubView: UIView!
     
     var videoTotalSeconds = 0.0
     var rangeSlider: RangeSlider! = nil
@@ -59,7 +58,10 @@ class CreateVideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCollectionViewCells()
-        
+        self.view.backgroundColor = .darkGray
+        containerView.backgroundColor = .darkGray
+        scrollSubView.backgroundColor = .darkGray
+        collectionView.backgroundColor = .darkGray
         let manager = FileManager.default
         
         guard let documentDirectory = try? manager.url(for: .documentDirectory,
@@ -71,7 +73,7 @@ class CreateVideoViewController: UIViewController {
     }
     
     private func registerCollectionViewCells() {
-        self.croppedVideosCollectionView.register(
+        self.collectionView.register(
             UINib(nibName: "CroppedVideoCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: "CroppedVideoCollectionViewCell")
     }
@@ -84,13 +86,6 @@ extension CreateVideoViewController {
         self.videoPicker.present(from: sender)
     }
     
-    @IBAction func videoCutButtonTouched(_ sender: UIButton) {
-
-    }
-    
-    @IBAction func addSoundCutButtonTouched(_ sender: UIButton) {
-        
-    }
     
     @IBAction func cancelCrop(_ sender: UIButton) {
         self.dismiss(animated: true)
@@ -320,8 +315,8 @@ extension CreateVideoViewController {
                     print("exported at \(outputURL)")
                     DispatchQueue.main.async {
                         
-                        self.croppedVideosCollectionView.reloadData()
-                        let numberOfItems = self.croppedVideosCollectionView.numberOfItems(inSection: 0)
+                        self.collectionView.reloadData()
+                        let numberOfItems = self.collectionView.numberOfItems(inSection: 0)
                         let cellsHeight = (numberOfItems * 120 )
                         let spacingHeight = ((numberOfItems - 1) * 10)
                         self.croppedCollectionViewHeightConstrain.constant = CGFloat(cellsHeight + spacingHeight)
@@ -394,7 +389,7 @@ extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewD
 
 extension CreateVideoViewController: CroppedVideoDelegate{
     func croppedVideoMerged() {
-        croppedVideosCollectionView.reloadData()
+        collectionView.reloadData()
     }
     
 }

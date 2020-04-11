@@ -20,88 +20,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="318" height="120"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dp-hh-h1r">
-                                <rect key="frame" x="0.0" y="0.0" width="126" height="120"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="03t-Lh-42C"/>
+                                    <constraint firstAttribute="width" constant="200" id="8nQ-8b-f5b"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DjA-Gq-utJ" customClass="AudioRecorderView" customModule="ViedoMaker" customModuleProvider="target">
-                                <rect key="frame" x="126" y="0.0" width="192" height="120"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKZ-h2-GAT">
+                                <rect key="frame" x="200" y="0.0" width="118" height="120"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1eG-JI-d8q">
-                                        <rect key="frame" x="16" y="12" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="ifx-4f-yJZ"/>
-                                            <constraint firstAttribute="height" constant="50" id="nwr-hf-GXK"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_record">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYh-oa-Quo">
-                                        <rect key="frame" x="64.5" y="78" width="63" height="38"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="63" id="FtT-tc-4u4"/>
-                                            <constraint firstAttribute="height" constant="38" id="Tq0-qJ-jMU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                        <state key="normal" title="Merge">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="mergeAudioWithVideo" destination="gTV-IL-0wX" eventType="touchUpInside" id="uyb-cb-FMy"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4t-MX-WVe">
-                                        <rect key="frame" x="96" y="68" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1p-fO-54n">
+                                        <rect key="frame" x="28" y="41" width="62.5" height="38.5"/>
+                                        <string key="text">Change 
+Audio</string>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCa-YC-Tzd">
-                                        <rect key="frame" x="126" y="12" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Gv2-AL-pnA"/>
-                                            <constraint firstAttribute="width" constant="50" id="VVC-Pd-bOY"/>
-                                        </constraints>
-                                        <state key="normal" image="ic_pause"/>
-                                        <connections>
-                                            <action selector="playRecording:" destination="DjA-Gq-utJ" eventType="touchUpInside" id="zc1-99-YLa"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="RYh-oa-Quo" secondAttribute="bottom" constant="4" id="4bB-eN-2cz"/>
-                                    <constraint firstItem="fCa-YC-Tzd" firstAttribute="centerY" secondItem="1eG-JI-d8q" secondAttribute="centerY" id="56u-QO-bVx"/>
-                                    <constraint firstItem="O4t-MX-WVe" firstAttribute="centerY" secondItem="DjA-Gq-utJ" secondAttribute="centerY" constant="8" id="JiT-rZ-SgO"/>
-                                    <constraint firstAttribute="trailing" secondItem="fCa-YC-Tzd" secondAttribute="trailing" constant="16" id="V1x-rV-CUD"/>
-                                    <constraint firstItem="1eG-JI-d8q" firstAttribute="top" secondItem="DjA-Gq-utJ" secondAttribute="top" constant="12" id="Zoj-rK-za3"/>
-                                    <constraint firstItem="RYh-oa-Quo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="O4t-MX-WVe" secondAttribute="bottom" constant="4" id="cI9-Ha-zuw"/>
-                                    <constraint firstItem="fCa-YC-Tzd" firstAttribute="leading" secondItem="1eG-JI-d8q" secondAttribute="trailing" constant="60" id="fYN-VH-jld"/>
-                                    <constraint firstItem="RYh-oa-Quo" firstAttribute="centerX" secondItem="DjA-Gq-utJ" secondAttribute="centerX" id="h0G-3e-vB8"/>
-                                    <constraint firstItem="1eG-JI-d8q" firstAttribute="leading" secondItem="DjA-Gq-utJ" secondAttribute="leading" constant="16" id="meP-Kd-G60"/>
-                                    <constraint firstItem="O4t-MX-WVe" firstAttribute="centerX" secondItem="DjA-Gq-utJ" secondAttribute="centerX" id="q75-EL-Y15"/>
+                                    <constraint firstItem="L1p-fO-54n" firstAttribute="centerY" secondItem="QKZ-h2-GAT" secondAttribute="centerY" id="VhF-SU-vgW"/>
+                                    <constraint firstItem="L1p-fO-54n" firstAttribute="centerX" secondItem="QKZ-h2-GAT" secondAttribute="centerX" id="crT-dt-WPZ"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="mergeButton" destination="RYh-oa-Quo" id="5Vg-hx-XV3"/>
-                                    <outlet property="playButton" destination="fCa-YC-Tzd" id="0JT-3Q-xBo"/>
-                                    <outlet property="recordButton" destination="1eG-JI-d8q" id="wHj-J2-BRB"/>
-                                    <outlet property="recordingTimeLabel" destination="O4t-MX-WVe" id="87v-YW-xyk"/>
-                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="DjA-Gq-utJ" secondAttribute="bottom" id="1vy-7d-dh9"/>
                             <constraint firstItem="7dp-hh-h1r" firstAttribute="top" secondItem="8Fa-53-Eqh" secondAttribute="top" id="7j5-FM-k1N"/>
-                            <constraint firstItem="DjA-Gq-utJ" firstAttribute="top" secondItem="8Fa-53-Eqh" secondAttribute="top" id="TUl-wf-TBT"/>
-                            <constraint firstAttribute="trailing" secondItem="DjA-Gq-utJ" secondAttribute="trailing" id="XP8-NZ-o0o"/>
+                            <constraint firstAttribute="bottom" secondItem="QKZ-h2-GAT" secondAttribute="bottom" id="NBl-mU-ZBU"/>
+                            <constraint firstItem="QKZ-h2-GAT" firstAttribute="leading" secondItem="7dp-hh-h1r" secondAttribute="trailing" id="OrB-D0-W9e"/>
+                            <constraint firstItem="QKZ-h2-GAT" firstAttribute="top" secondItem="8Fa-53-Eqh" secondAttribute="top" id="Syq-Y1-510"/>
                             <constraint firstItem="7dp-hh-h1r" firstAttribute="leading" secondItem="8Fa-53-Eqh" secondAttribute="leading" id="bP9-ve-Nhu"/>
-                            <constraint firstItem="DjA-Gq-utJ" firstAttribute="leading" secondItem="7dp-hh-h1r" secondAttribute="trailing" id="hgL-rR-bbb"/>
+                            <constraint firstAttribute="trailing" secondItem="QKZ-h2-GAT" secondAttribute="trailing" id="pdV-sF-nbL"/>
                             <constraint firstAttribute="bottom" secondItem="7dp-hh-h1r" secondAttribute="bottom" id="tkz-d3-UO2"/>
                         </constraints>
                     </view>
@@ -116,14 +68,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="318" height="109"/>
             <connections>
-                <outlet property="audioRecordingView" destination="DjA-Gq-utJ" id="xrn-R3-nD8"/>
                 <outlet property="view" destination="7dp-hh-h1r" id="gVA-au-UZg"/>
             </connections>
             <point key="canvasLocation" x="221.73913043478262" y="132.58928571428572"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="ic_pause" width="64" height="64"/>
-        <image name="ic_record" width="64" height="64"/>
-    </resources>
 </document>

@@ -14,7 +14,6 @@ import MediaPlayer
 class CroppedVideoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var view: UIView!
-    @IBOutlet private weak  var audioRecordingView: AudioRecorderView!
 
 //    weak var delegate: UpdateVideoUrlDelegate?
 
@@ -49,6 +48,6 @@ class CroppedVideoCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupCell() {
-       // audioImageView.image = UIImage(named: "ic_record")
+        view.backgroundColor = .darkGray
     }
 }
