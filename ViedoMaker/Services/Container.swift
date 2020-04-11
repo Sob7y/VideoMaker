@@ -39,11 +39,11 @@ class Container {
             return navigation
         }
 
-        class func createVideoCreatorViewController() -> UIViewController {
+        class func createVideoCreatorViewController(url: URL?) -> CreateVideoViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let createVC = storyboard.instantiateViewController(
-                withIdentifier: "CreateVideoViewController") as? CreateVideoViewController else {return UIViewController()}
-            
+                withIdentifier: "CreateVideoViewController") as? CreateVideoViewController else {return CreateVideoViewController()}
+            createVC.originalVideoUrl = url
             return createVC
         }
     }

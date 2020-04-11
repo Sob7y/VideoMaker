@@ -44,6 +44,8 @@ class CreateVideoViewController: UIViewController {
     var rangeSlider: RangeSlider! = nil
     var isSliderEnd = true
     
+    var originalVideoUrl: URL?
+    
     let presentr: Presentr = {
         let presenter = Presentr(presentationType: .alert)
         presenter.transitionType = nil
@@ -61,14 +63,8 @@ class CreateVideoViewController: UIViewController {
         containerView.backgroundColor = .darkGray
         scrollSubView.backgroundColor = .darkGray
         collectionView.backgroundColor = .darkGray
-        let manager = FileManager.default
-        
-        guard let documentDirectory = try? manager.url(for: .documentDirectory,
-                                                       in: .userDomainMask,
-                                                       appropriateFor: nil,
-                                                       create: true) else {return}
-        let outputURL = documentDirectory.appendingPathComponent("output")
-        _ = try? manager.removeItem(at: outputURL)
+        viewOriginalVideo(url: originalVideoUrl)
+
     }
     
     private func registerCollectionViewCells() {
@@ -80,10 +76,10 @@ class CreateVideoViewController: UIViewController {
 
 //IBActions
 extension CreateVideoViewController {
-    @IBAction func videoPickerButtonTouched(_ sender: UIButton) {
-        self.videoPicker = VideoPicker(presentationController: self, delegate: self)
-        self.videoPicker.present(from: sender)
-    }
+//    @IBAction func videoPickerButtonTouched(_ sender: UIButton) {
+//        self.videoPicker = VideoPicker(presentationController: self, delegate: self)
+//        self.videoPicker.present(from: sender)
+//    }
     
     
     @IBAction func cancelCrop(_ sender: UIButton) {
@@ -97,9 +93,9 @@ extension CreateVideoViewController {
     }
 }
 
-extension CreateVideoViewController: VideoPickerDelegate {
+extension CreateVideoViewController {
     
-    func didSelect(url: URL?) {
+    func viewOriginalVideo(url: URL?) {
         guard let url = url else {
             return
         }
