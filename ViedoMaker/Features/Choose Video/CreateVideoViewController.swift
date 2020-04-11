@@ -24,7 +24,6 @@ class CreateVideoViewController: UIViewController {
     var thumbtimeSeconds: Int!
     var videoPlaybackPosition: CGFloat = 0.0
     var asset: AVAsset!
-    var numberOfCroppedVideos = 0
     
     var croppedVideos: [VideoModel] = []
     
@@ -288,8 +287,7 @@ extension CreateVideoViewController {
             do {
                 try manager.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
                 //let name = hostent.newName()
-                numberOfCroppedVideos += 1
-                outputURL = outputURL.appendingPathComponent("\(numberOfCroppedVideos).mp4")
+                outputURL = outputURL.appendingPathComponent("\(croppedVideos.count + 1).mp4")
                 videoModel.oroginalPath = outputURL
                 croppedVideos.append(videoModel)
                                 
