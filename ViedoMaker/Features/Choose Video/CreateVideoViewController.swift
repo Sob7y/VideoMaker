@@ -91,6 +91,24 @@ extension CreateVideoViewController {
         let end = Float(endTimeLabel.text!)
         self.cropVideo(sourceURL1: videoUrl!, startTime: start!, endTime: end!)
     }
+    
+    
+    func insertCroppedVideo(croppedVideoURL: URL, in originalVideoURL: URL, startTime: Float, endTime: Float) {
+
+        let asset = AVAsset(url: originalVideoURL)
+        let duration = asset.duration
+        let durationTime = CMTimeGetSeconds(duration)
+        
+        let startVideo = self.cropVideo(sourceURL1: originalVideoURL, startTime: Float(0), endTime: startTime)
+        
+        let endVideo = self.cropVideo(sourceURL1: originalVideoURL, startTime: endTime , endTime: Float(durationTime) )
+        
+        
+        
+        
+        
+    }
+    
 }
 
 extension CreateVideoViewController {
@@ -386,4 +404,69 @@ extension CreateVideoViewController: CroppedVideoDelegate{
         collectionView.reloadData()
     }
     
+}
+
+extension CreateVideoViewController {
+    
+    func cropVideo(sourceURL: URL, startTime:Float, endTime:Float, with name: String) -> URL? {
+        
+        let manager = FileManager.default
+        
+        guard let documentDirectory = try? manager.url(for: .documentDirectory,
+                                                       in: .userDomainMask,
+                                                       appropriateFor: nil,
+                                                       create: true) else {return nil}
+        guard let mediaType = "mp4" as? String else {return nil}
+        guard (sourceURL as? URL) != nil else {return nil}
+        
+        if mediaType == kUTTypeMovie as String || mediaType == "mp4" as String
+        {
+            let videoModel = VideoModel()
+            let length = Float(asset.duration.value) / Float(asset.duration.timescale)
+            print("video length: \(length) seconds")
+            
+            let start = startTime
+            let end = endTime
+            
+            print(documentDirectory)
+            var outputURL = documentDirectory.appendingPathComponent("output")
+            do {
+                try manager.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
+                //let name = hostent.newName()
+                outputURL = outputURL.appendingPathComponent("\(name).mp4")
+                                
+            }catch let error {
+                print(error)
+            }
+            
+            //Remove existing file
+            //   _ = try? manager.removeItem(at: outputURL)
+            
+            guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return nil}
+            exportSession.outputURL = videoModel.oroginalPath
+            exportSession.outputFileType = AVFileType.mp4
+            
+            let startTime = CMTime(seconds: Double(start ), preferredTimescale: 1000)
+            let endTime = CMTime(seconds: Double(end ), preferredTimescale: 1000)
+            let timeRange = CMTimeRange(start: startTime, end: endTime)
+            
+            exportSession.timeRange = timeRange
+            exportSession.exportAsynchronously{
+                switch exportSession.status {
+                case .completed:
+                    print("exported at \(outputURL)")
+                   
+//                    return outputURL
+                //         self.saveToCameraRoll(URL: outputURL as NSURL?)
+                case .failed:
+                    print("failed \(exportSession.error)")
+                    
+                case .cancelled:
+                    print("cancelled \(exportSession.error)")
+                    
+                default: break
+                }
+            }
+        }
+    }
 }
