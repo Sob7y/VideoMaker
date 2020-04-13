@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -468,9 +468,22 @@
                                     <constraint firstItem="wMn-eC-Ii0" firstAttribute="width" secondItem="Ukq-Tx-kGA" secondAttribute="width" id="g0A-Dc-xed"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJc-CN-SVa">
+                                <rect key="frame" x="107" y="764" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Big-gO-tQI"/>
+                                    <constraint firstAttribute="width" constant="200" id="XbT-pf-GtV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="finishMerging:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e5A-El-4Mg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="oJc-CN-SVa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3v7-yC-LF0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oJc-CN-SVa" secondAttribute="bottom" constant="68" id="V81-0x-gYc"/>
                             <constraint firstItem="Ukq-Tx-kGA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lGs-H8-Trx"/>
                             <constraint firstItem="Ukq-Tx-kGA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lc5-KP-A5r"/>
                             <constraint firstAttribute="bottom" secondItem="Ukq-Tx-kGA" secondAttribute="bottom" id="qjM-u0-ELl"/>

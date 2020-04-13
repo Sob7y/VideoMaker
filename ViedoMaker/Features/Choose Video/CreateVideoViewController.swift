@@ -92,21 +92,36 @@ extension CreateVideoViewController {
         self.cropVideo(sourceURL1: videoUrl!, startTime: start!, endTime: end!)
     }
     
+    @IBAction func finishMerging(_ sender: UIButton) {
+        let firstVideo = croppedVideos.first
+        insertCroppedVideo(croppedVideoURL: (firstVideo?.editedPath)!, in: self.originalVideoUrl!, startTime: (firstVideo?.startTime)!, endTime: (firstVideo?.endTime)!)
+    }
     
     func insertCroppedVideo(croppedVideoURL: URL, in originalVideoURL: URL, startTime: Float, endTime: Float) {
 
         let asset = AVAsset(url: originalVideoURL)
         let duration = asset.duration
         let durationTime = CMTimeGetSeconds(duration)
+        var firstVideoAsset: AVAsset?
+        var secondVideoAsset: AVAsset?
+        let croppedVideoAsset: AVAsset? = AVAsset(url: croppedVideoURL)
         
-        let startVideo = self.cropVideo(sourceURL1: originalVideoURL, startTime: Float(0), endTime: startTime)
-        
-        let endVideo = self.cropVideo(sourceURL1: originalVideoURL, startTime: endTime , endTime: Float(durationTime) )
-        
-        
-        
-        
-        
+        self.cropVideo(sourceURL: originalVideoURL, startTime: startTime, endTime: endTime, name: "startVideo") { (url) in
+            firstVideoAsset = AVAsset(url: url)
+            print("firstVideoURl = \(url)")
+            self.cropVideo(sourceURL: originalVideoURL, startTime: startTime, endTime: Float(durationTime), name: "endVideo") { (url) in
+                secondVideoAsset = AVAsset(url: url)
+                print("firstVideoURl = \(url)")
+                
+                if let firstAsset = firstVideoAsset, let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
+                    self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset, secondAsset], success: { (url) in
+                        self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
+                    }) { (error) in
+                        
+                    }
+                }                
+            }
+        }
     }
     
 }
@@ -130,15 +145,16 @@ extension CreateVideoViewController {
     
     //MARK: Video Play Action
     func addVideoPlayer(videoUrl: URL, to view: UIView) {
-        self.avplayer = AVPlayer(url: videoUrl)
-        playerController.player = self.avplayer
-        self.addChild(playerController)
-        view.addSubview(playerController.view)
-        playerController.view.frame = view.bounds
-        playerController.showsPlaybackControls = true
-        self.avplayer.play()
+        DispatchQueue.main.async {
+            self.avplayer = AVPlayer(url: videoUrl)
+            self.playerController.player = self.avplayer
+            self.addChild(self.playerController)
+            view.addSubview(self.playerController.view)
+            self.playerController.view.frame = view.bounds
+            self.playerController.showsPlaybackControls = true
+            self.avplayer.play()
+        }
     }
-    
     
     func setVideoDuration(_ url: URL) {
         let asset = AVAsset(url: url)
@@ -326,7 +342,6 @@ extension CreateVideoViewController {
                 case .completed:
                     print("exported at \(outputURL)")
                     DispatchQueue.main.async {
-                        
                         self.collectionView.reloadData()
                         let numberOfItems = self.collectionView.numberOfItems(inSection: 0)
                         let cellsHeight = (numberOfItems * 120 )
@@ -374,7 +389,6 @@ extension CreateVideoViewController: UICollectionViewDelegate, UICollectionViewD
             else { return UICollectionViewCell() }
         
         if let editedPath = croppedVideos[indexPath.row].editedPath {
-            
             cell.videoUrl = editedPath
         } else {
             cell.videoUrl = croppedVideos[indexPath.row].oroginalPath
@@ -408,20 +422,15 @@ extension CreateVideoViewController: CroppedVideoDelegate{
 
 extension CreateVideoViewController {
     
-    func cropVideo(sourceURL: URL, startTime:Float, endTime:Float, with name: String) -> URL? {
-        
+    func cropVideo(sourceURL: URL, startTime:Float, endTime:Float, name: String, success: @escaping ((URL) -> Void)) {
         let manager = FileManager.default
+        let mediaType = "mp4"
         
         guard let documentDirectory = try? manager.url(for: .documentDirectory,
                                                        in: .userDomainMask,
                                                        appropriateFor: nil,
-                                                       create: true) else {return nil}
-        guard let mediaType = "mp4" as? String else {return nil}
-        guard (sourceURL as? URL) != nil else {return nil}
-        
-        if mediaType == kUTTypeMovie as String || mediaType == "mp4" as String
-        {
-            let videoModel = VideoModel()
+                                                       create: true) else {return}
+        if mediaType == kUTTypeMovie as String || mediaType == "mp4" as String {
             let length = Float(asset.duration.value) / Float(asset.duration.timescale)
             print("video length: \(length) seconds")
             
@@ -432,18 +441,13 @@ extension CreateVideoViewController {
             var outputURL = documentDirectory.appendingPathComponent("output")
             do {
                 try manager.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
-                //let name = hostent.newName()
                 outputURL = outputURL.appendingPathComponent("\(name).mp4")
-                                
-            }catch let error {
+            } catch let error {
                 print(error)
             }
             
-            //Remove existing file
-            //   _ = try? manager.removeItem(at: outputURL)
-            
-            guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else {return nil}
-            exportSession.outputURL = videoModel.oroginalPath
+            guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else { return }
+            exportSession.outputURL = outputURL
             exportSession.outputFileType = AVFileType.mp4
             
             let startTime = CMTime(seconds: Double(start ), preferredTimescale: 1000)
@@ -455,18 +459,87 @@ extension CreateVideoViewController {
                 switch exportSession.status {
                 case .completed:
                     print("exported at \(outputURL)")
-                   
-//                    return outputURL
-                //         self.saveToCameraRoll(URL: outputURL as NSURL?)
+                    success(outputURL)
                 case .failed:
-                    print("failed \(exportSession.error)")
-                    
+                    print("failed \(String(describing: exportSession.error))")
+                    break
                 case .cancelled:
-                    print("cancelled \(exportSession.error)")
-                    
+                    print("cancelled \(String(describing: exportSession.error))")
+                    break
                 default: break
                 }
             }
+        }
+    }
+    
+    func mergeTwoVideosArry(arrayVideos: [AVAsset], success: @escaping ((URL) -> Void), failure: @escaping ((String?) -> Void)) {
+        
+        let mainComposition = AVMutableComposition()
+        let compositionVideoTrack = mainComposition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid)
+        compositionVideoTrack?.preferredTransform = CGAffineTransform(rotationAngle: .pi / 3)
+        
+        let soundtrackTrack = mainComposition.addMutableTrack(withMediaType: .audio, preferredTrackID: kCMPersistentTrackID_Invalid)
+        
+        var insertTime = CMTime.zero
+        
+        for videoAsset in arrayVideos {
+            try! compositionVideoTrack?.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: videoAsset.duration), of: videoAsset.tracks(withMediaType: .video)[0], at: insertTime)
+            try! soundtrackTrack?.insertTimeRange(CMTimeRangeMake(start: CMTime.zero, duration: videoAsset.duration), of: videoAsset.tracks(withMediaType: .audio)[0], at: insertTime)
+            
+            insertTime = CMTimeAdd(insertTime, videoAsset.duration)
+        }
+        
+        //Create Directory path for Save
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        var outputURL = documentDirectory.appendingPathComponent("MergeTwoVideos")
+        do {
+            try FileManager.default.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
+            outputURL = outputURL.appendingPathComponent("\(outputURL.lastPathComponent).m4v")
+        }catch let error {
+            failure(error.localizedDescription)
+        }
+        
+        //Remove existing file
+        self.deleteFile(outputURL)
+        
+        //export the video to as per your requirement conversion
+        if let exportSession = AVAssetExportSession(asset: mainComposition, presetName: AVAssetExportPresetHighestQuality) {
+            exportSession.outputURL = outputURL
+            exportSession.outputFileType = AVFileType.mp4
+            exportSession.shouldOptimizeForNetworkUse = true
+            
+            /// try to export the file and handle the status cases
+            exportSession.exportAsynchronously(completionHandler: {
+                switch exportSession.status {
+                case .completed :
+                    success(outputURL)
+                case .failed:
+                    if let _error = exportSession.error?.localizedDescription {
+                        failure(_error)
+                    }
+                case .cancelled:
+                    if let _error = exportSession.error?.localizedDescription {
+                        failure(_error)
+                    }
+                default:
+                    if let _error = exportSession.error?.localizedDescription {
+                        failure(_error)
+                    }
+                }
+            })
+        } else {
+            failure("video export session failed")
+        }
+    }
+    
+    func deleteFile(_ filePath:URL) {
+        guard FileManager.default.fileExists(atPath: filePath.path) else {
+            return
+        }
+        do {
+            try FileManager.default.removeItem(atPath: filePath.path)
+        }catch{
+            fatalError("Unable to delete file: \(error) : \(#function).")
         }
     }
 }
