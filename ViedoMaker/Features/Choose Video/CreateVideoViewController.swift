@@ -98,7 +98,7 @@ extension CreateVideoViewController {
     }
     
     func insertCroppedVideo(croppedVideoURL: URL, in originalVideoURL: URL, startTime: Float, endTime: Float) {
-
+        
         let asset = AVAsset(url: originalVideoURL)
         let duration = asset.duration
         let durationTime = CMTimeGetSeconds(duration)
@@ -106,20 +106,48 @@ extension CreateVideoViewController {
         var secondVideoAsset: AVAsset?
         let croppedVideoAsset: AVAsset? = AVAsset(url: croppedVideoURL)
         
-        self.cropVideo(sourceURL: originalVideoURL, startTime: startTime, endTime: endTime, name: "startVideo") { (url) in
-            firstVideoAsset = AVAsset(url: url)
-            print("firstVideoURl = \(url)")
-            self.cropVideo(sourceURL: originalVideoURL, startTime: startTime, endTime: Float(durationTime), name: "endVideo") { (url) in
+        if startTime == Float(0) {
+            self.cropVideo(sourceURL: originalVideoURL, startTime: endTime, endTime: Float(durationTime), name: "endVideo") { (url) in
                 secondVideoAsset = AVAsset(url: url)
                 print("firstVideoURl = \(url)")
                 
-                if let firstAsset = firstVideoAsset, let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
-                    self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset, secondAsset], success: { (url) in
+                if let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
+                    self.mergeTwoVideosArry(arrayVideos: [croppedAsset, secondAsset], success: { (url) in
                         self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
                     }) { (error) in
                         
                     }
-                }                
+                }
+            }
+        } else if endTime == Float(durationTime) {
+            self.cropVideo(sourceURL: originalVideoURL, startTime: Float(0), endTime: startTime, name: "startVideo") { (url) in
+                firstVideoAsset = AVAsset(url: url)
+                print("firstVideoURl = \(url)")
+                
+                if let firstAsset = firstVideoAsset, let croppedAsset = croppedVideoAsset {
+                    self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset], success: { (url) in
+                        self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
+                    }) { (error) in
+                        
+                    }
+                }
+            }
+        } else {
+            self.cropVideo(sourceURL: originalVideoURL, startTime: Float(0), endTime: startTime, name: "startVideo") { (url) in
+                firstVideoAsset = AVAsset(url: url)
+                print("firstVideoURl = \(url)")
+                self.cropVideo(sourceURL: originalVideoURL, startTime: endTime, endTime: Float(durationTime), name: "endVideo") { (url) in
+                    secondVideoAsset = AVAsset(url: url)
+                    print("firstVideoURl = \(url)")
+                    
+                    if let firstAsset = firstVideoAsset, let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
+                        self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset, secondAsset], success: { (url) in
+                            self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
+                        }) { (error) in
+                            
+                        }
+                    }
+                }
             }
         }
     }
