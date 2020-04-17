@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -255,7 +255,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMn-eC-Ii0" userLabel="ScrollSubView">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="561"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ik-Ys-qUx">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
@@ -265,10 +265,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dir-nk-p4H">
-                                                        <rect key="frame" x="0.0" y="300" width="414" height="141"/>
+                                                        <rect key="frame" x="0.0" y="300" width="414" height="170"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfU-UB-bxx">
-                                                                <rect key="frame" x="20" y="16" width="70" height="45"/>
+                                                                <rect key="frame" x="40" y="16" width="70" height="45"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYU-S2-WBO">
                                                                         <rect key="frame" x="4" y="0.0" width="62" height="21.5"/>
@@ -309,7 +309,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DA2-zV-jfw">
-                                                                <rect key="frame" x="324" y="16" width="70" height="45"/>
+                                                                <rect key="frame" x="304" y="16" width="70" height="45"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtB-Wc-fKe">
                                                                         <rect key="frame" x="4" y="0.0" width="62" height="21.5"/>
@@ -365,10 +365,10 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3wm-Op-kWV">
-                                                                <rect key="frame" x="20" y="81" width="374" height="40"/>
+                                                                <rect key="frame" x="20" y="111" width="374" height="39"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o91-M7-Oio">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="39"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -390,24 +390,42 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIo-xe-Jah">
+                                                                <rect key="frame" x="22.5" y="69" width="105" height="30"/>
+                                                                <state key="normal" title="Pick Start Time"/>
+                                                                <connections>
+                                                                    <action selector="pickStartTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VPW-U5-sbv"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeA-mP-P4s">
+                                                                <rect key="frame" x="290.5" y="69" width="97" height="30"/>
+                                                                <state key="normal" title="Pick End Time"/>
+                                                                <connections>
+                                                                    <action selector="pickEndTime:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ycN-fe-51j"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="3wm-Op-kWV" firstAttribute="top" secondItem="sfU-UB-bxx" secondAttribute="bottom" constant="20" id="2TH-5k-e2T"/>
-                                                            <constraint firstItem="sfU-UB-bxx" firstAttribute="leading" secondItem="Dir-nk-p4H" secondAttribute="leading" constant="20" id="SfQ-bz-USs"/>
+                                                            <constraint firstItem="3wm-Op-kWV" firstAttribute="top" secondItem="sfU-UB-bxx" secondAttribute="bottom" constant="50" id="2TH-5k-e2T"/>
+                                                            <constraint firstItem="FeA-mP-P4s" firstAttribute="centerX" secondItem="DA2-zV-jfw" secondAttribute="centerX" id="B0u-c5-XCa"/>
+                                                            <constraint firstItem="sfU-UB-bxx" firstAttribute="leading" secondItem="Dir-nk-p4H" secondAttribute="leading" constant="40" id="SfQ-bz-USs"/>
                                                             <constraint firstItem="hD0-40-t9E" firstAttribute="centerY" secondItem="DA2-zV-jfw" secondAttribute="centerY" id="XhI-hY-UQL"/>
                                                             <constraint firstItem="DA2-zV-jfw" firstAttribute="top" secondItem="Dir-nk-p4H" secondAttribute="top" constant="16" id="Xne-AS-orh"/>
                                                             <constraint firstItem="hD0-40-t9E" firstAttribute="centerX" secondItem="Dir-nk-p4H" secondAttribute="centerX" id="Yv0-Tf-VAj"/>
-                                                            <constraint firstAttribute="height" constant="141" id="bAU-n4-7tI"/>
+                                                            <constraint firstAttribute="height" constant="170" id="bAU-n4-7tI"/>
+                                                            <constraint firstItem="rIo-xe-Jah" firstAttribute="centerX" secondItem="sfU-UB-bxx" secondAttribute="centerX" id="f96-2S-yhC"/>
+                                                            <constraint firstItem="FeA-mP-P4s" firstAttribute="top" secondItem="DA2-zV-jfw" secondAttribute="bottom" constant="8" id="fe6-wH-HR1"/>
+                                                            <constraint firstItem="rIo-xe-Jah" firstAttribute="top" secondItem="sfU-UB-bxx" secondAttribute="bottom" constant="8" id="kSS-m9-XJp"/>
                                                             <constraint firstItem="3wm-Op-kWV" firstAttribute="leading" secondItem="Dir-nk-p4H" secondAttribute="leading" constant="20" id="tEk-mI-jdy"/>
                                                             <constraint firstAttribute="bottom" secondItem="3wm-Op-kWV" secondAttribute="bottom" constant="20" id="tO4-kN-jgH"/>
-                                                            <constraint firstAttribute="trailing" secondItem="DA2-zV-jfw" secondAttribute="trailing" constant="20" id="tUP-DZ-UMb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="DA2-zV-jfw" secondAttribute="trailing" constant="40" id="tUP-DZ-UMb"/>
                                                             <constraint firstItem="DA2-zV-jfw" firstAttribute="centerY" secondItem="sfU-UB-bxx" secondAttribute="centerY" id="u4B-Jm-kAn"/>
                                                             <constraint firstAttribute="trailing" secondItem="3wm-Op-kWV" secondAttribute="trailing" constant="20" id="xcL-6y-TTc"/>
                                                         </constraints>
                                                     </view>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VlL-C5-aMq">
-                                                        <rect key="frame" x="0.0" y="461" width="414" height="100"/>
+                                                        <rect key="frame" x="0.0" y="490" width="414" height="100"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="Sha-Sb-d2N"/>

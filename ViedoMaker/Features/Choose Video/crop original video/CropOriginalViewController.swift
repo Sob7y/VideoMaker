@@ -59,9 +59,14 @@ extension CropOriginalViewController {
     
     @IBAction func applyCrop(_ sender: UIButton) {
         removeOutputCroppedFile()
-        let start = Float(startTimeLabel.text!)
-        let end = Float(endTimeLabel.text!)
-        self.cropVideo(sourceURL1: videoUrl!, startTime: start!, endTime: end!)
+        
+       let start = self.rangeSlider.lowerValue
+        let end = self.rangeSlider.upperValue
+        
+//        let start = Float(startTimeLabel.text!)
+//        let end = Float(endTimeLabel.text!)
+        
+        self.cropVideo(sourceURL1: videoUrl!, startTime: Float(start), endTime: Float(end))
     }
     
     private func removeOutputCroppedFile() {

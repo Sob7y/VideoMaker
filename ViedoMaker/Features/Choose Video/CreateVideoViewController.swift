@@ -45,6 +45,8 @@ class CreateVideoViewController: UIViewController {
     var isSliderEnd = true
     
     var originalVideoUrl: URL?
+    var mergedVideoUrl: URL?
+
     
     let presentr: Presentr = {
         let presenter = Presentr(presentationType: .alert)
@@ -64,6 +66,12 @@ class CreateVideoViewController: UIViewController {
         scrollSubView.backgroundColor = .darkGray
         collectionView.backgroundColor = .darkGray
         viewOriginalVideo(url: originalVideoUrl)
+        
+        let currentItem = avplayer.currentItem
+        if let duration = currentItem?.duration {
+            self.rangeSlider.maximumValue = CMTimeGetSeconds(duration)
+            self.rangeSlider.upperValue = CMTimeGetSeconds(duration)
+        }
 
     }
     
@@ -93,11 +101,40 @@ extension CreateVideoViewController {
     }
     
     @IBAction func finishMerging(_ sender: UIButton) {
-        let firstVideo = croppedVideos.first
-        insertCroppedVideo(croppedVideoURL: (firstVideo?.editedPath)!, in: self.originalVideoUrl!, startTime: (firstVideo?.startTime)!, endTime: (firstVideo?.endTime)!)
+        //        let firstVideo = croppedVideos.first
+        //        self.mergedVideoUrl = originalVideoUrl
+        var index = 0
+        let success: ((URL) -> Void) = { url in
+           print(url)
+            
+//            index += 1
+//            if index < self.croppedVideos.count {
+//                self.insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, success: success )
+//            }
+        }
+        insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, success: success )
     }
     
-    func insertCroppedVideo(croppedVideoURL: URL, in originalVideoURL: URL, startTime: Float, endTime: Float) {
+    @IBAction func pickStartTime(_ sender: UIButton) {
+        let currentItem = avplayer.currentItem
+        if let currentTime = currentItem?.currentTime() {
+            print(CMTimeGetSeconds(currentTime))
+            self.rangeSlider.lowerValue = CMTimeGetSeconds(currentTime)
+            self.startTimeLabel.text = "\(rangeSlider.lowerValue)"
+        }
+    }
+    
+    @IBAction func pickEndTime(_ sender: UIButton) {
+        let currentItem = avplayer.currentItem
+        if let currentTime = currentItem?.currentTime() {
+            print(CMTimeGetSeconds(currentTime))
+            self.rangeSlider.upperValue = CMTimeGetSeconds(currentTime)
+            self.endTimeLabel.text = "\(rangeSlider.upperValue)"
+        }
+    }
+
+    
+    func insertCroppedVideo(croppedVideoURL: URL, in originalVideoURL: URL, startTime: Float, endTime: Float,  success: @escaping ((URL) -> Void)) {
         
         let asset = AVAsset(url: originalVideoURL)
         let duration = asset.duration
@@ -113,6 +150,8 @@ extension CreateVideoViewController {
                 
                 if let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
                     self.mergeTwoVideosArry(arrayVideos: [croppedAsset, secondAsset], success: { (url) in
+                        self.mergedVideoUrl = url
+                        success(url)
                         self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
                     }) { (error) in
                         
@@ -126,6 +165,8 @@ extension CreateVideoViewController {
                 
                 if let firstAsset = firstVideoAsset, let croppedAsset = croppedVideoAsset {
                     self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset], success: { (url) in
+                        self.mergedVideoUrl = url
+                        success(url)
                         self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
                     }) { (error) in
                         
@@ -142,6 +183,8 @@ extension CreateVideoViewController {
                     
                     if let firstAsset = firstVideoAsset, let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
                         self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset, secondAsset], success: { (url) in
+                            self.mergedVideoUrl = url
+                            success(url)
                             self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
                         }) { (error) in
                             
