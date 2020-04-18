@@ -104,15 +104,26 @@ extension CreateVideoViewController {
         //        let firstVideo = croppedVideos.first
         //        self.mergedVideoUrl = originalVideoUrl
         var index = 0
+        var mergedUrl: URL?
+        var success2: ((URL?) -> Void)? = nil
         let success: ((URL) -> Void) = { url in
-           print(url)
-            
-//            index += 1
-//            if index < self.croppedVideos.count {
-//                self.insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, success: success )
-//            }
+            mergedUrl = url
+            if success2 != nil {
+                success2!(url)
+            }
         }
-        insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, success: success )
+        
+        success2 = { url in
+            print(url)
+            index += 1
+            print(mergedUrl)
+            if index < self.croppedVideos.count {
+                self.insertCroppedVideo(croppedVideoURL: (self.croppedVideos[index].editedPath)!, in: url!, startTime: (self.croppedVideos[index].startTime)!, endTime: (self.croppedVideos[index].endTime)!, counter: index, success: success )
+            }
+            
+        }
+       
+        insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, counter: index, success: success )
     }
     
     @IBAction func pickStartTime(_ sender: UIButton) {
@@ -134,9 +145,9 @@ extension CreateVideoViewController {
     }
 
     
-    func insertCroppedVideo(croppedVideoURL: URL, in originalVideoURL: URL, startTime: Float, endTime: Float,  success: @escaping ((URL) -> Void)) {
+    func insertCroppedVideo(croppedVideoURL: URL, in originalURL: URL, startTime: Float, endTime: Float, counter: Int,  success: @escaping ((URL) -> Void)) {
         
-        let asset = AVAsset(url: originalVideoURL)
+        let asset = AVAsset(url: originalURL)
         let duration = asset.duration
         let durationTime = CMTimeGetSeconds(duration)
         var firstVideoAsset: AVAsset?
@@ -144,12 +155,12 @@ extension CreateVideoViewController {
         let croppedVideoAsset: AVAsset? = AVAsset(url: croppedVideoURL)
         
         if startTime == Float(0) {
-            self.cropVideo(sourceURL: originalVideoURL, startTime: endTime, endTime: Float(durationTime), name: "endVideo") { (url) in
+            self.cropVideo(sourceURL: originalURL, startTime: endTime, endTime: Float(durationTime), name: "endVideo", counter: counter) { (url) in
                 secondVideoAsset = AVAsset(url: url)
                 print("firstVideoURl = \(url)")
                 
                 if let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
-                    self.mergeTwoVideosArry(arrayVideos: [croppedAsset, secondAsset], success: { (url) in
+                    self.mergeTwoVideosArry(arrayVideos: [croppedAsset, secondAsset], counter: counter, success: { (url) in
                         self.mergedVideoUrl = url
                         success(url)
                         self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
@@ -159,12 +170,12 @@ extension CreateVideoViewController {
                 }
             }
         } else if endTime == Float(durationTime) {
-            self.cropVideo(sourceURL: originalVideoURL, startTime: Float(0), endTime: startTime, name: "startVideo") { (url) in
+            self.cropVideo(sourceURL: originalURL, startTime: Float(0), endTime: startTime, name: "startVideo", counter: counter) { (url) in
                 firstVideoAsset = AVAsset(url: url)
                 print("firstVideoURl = \(url)")
                 
                 if let firstAsset = firstVideoAsset, let croppedAsset = croppedVideoAsset {
-                    self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset], success: { (url) in
+                    self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset], counter: counter, success: { (url) in
                         self.mergedVideoUrl = url
                         success(url)
                         self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
@@ -174,15 +185,15 @@ extension CreateVideoViewController {
                 }
             }
         } else {
-            self.cropVideo(sourceURL: originalVideoURL, startTime: Float(0), endTime: startTime, name: "startVideo") { (url) in
+            self.cropVideo(sourceURL: originalURL, startTime: Float(0), endTime: startTime, name: "startVideo", counter: counter) { (url) in
                 firstVideoAsset = AVAsset(url: url)
                 print("firstVideoURl = \(url)")
-                self.cropVideo(sourceURL: originalVideoURL, startTime: endTime, endTime: Float(durationTime), name: "endVideo") { (url) in
+                self.cropVideo(sourceURL: originalURL, startTime: endTime, endTime: Float(durationTime), name: "endVideo", counter: counter) { (url) in
                     secondVideoAsset = AVAsset(url: url)
                     print("firstVideoURl = \(url)")
                     
                     if let firstAsset = firstVideoAsset, let secondAsset = secondVideoAsset, let croppedAsset = croppedVideoAsset {
-                        self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset, secondAsset], success: { (url) in
+                        self.mergeTwoVideosArry(arrayVideos: [firstAsset, croppedAsset, secondAsset], counter: counter, success: { (url) in
                             self.mergedVideoUrl = url
                             success(url)
                             self.addVideoPlayer(videoUrl: url, to: self.videoPlayerView)
@@ -493,16 +504,16 @@ extension CreateVideoViewController: CroppedVideoDelegate{
 
 extension CreateVideoViewController {
     
-    func cropVideo(sourceURL: URL, startTime:Float, endTime:Float, name: String, success: @escaping ((URL) -> Void)) {
+    func cropVideo(sourceURL: URL, startTime:Float, endTime:Float, name: String, counter: Int, success: @escaping ((URL) -> Void)) {
         let manager = FileManager.default
         let mediaType = "mp4"
-        
+        let sourceAsset = AVAsset(url: sourceURL)
         guard let documentDirectory = try? manager.url(for: .documentDirectory,
                                                        in: .userDomainMask,
                                                        appropriateFor: nil,
                                                        create: true) else {return}
         if mediaType == kUTTypeMovie as String || mediaType == "mp4" as String {
-            let length = Float(asset.duration.value) / Float(asset.duration.timescale)
+            let length = Float(sourceAsset.duration.value) / Float(sourceAsset.duration.timescale)
             print("video length: \(length) seconds")
             
             let start = startTime
@@ -517,7 +528,7 @@ extension CreateVideoViewController {
                 print(error)
             }
             
-            guard let exportSession = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetHighestQuality) else { return }
+            guard let exportSession = AVAssetExportSession(asset: sourceAsset, presetName: AVAssetExportPresetHighestQuality) else { return }
             exportSession.outputURL = outputURL
             exportSession.outputFileType = AVFileType.mp4
             
@@ -543,7 +554,7 @@ extension CreateVideoViewController {
         }
     }
     
-    func mergeTwoVideosArry(arrayVideos: [AVAsset], success: @escaping ((URL) -> Void), failure: @escaping ((String?) -> Void)) {
+    func mergeTwoVideosArry(arrayVideos: [AVAsset], counter: Int, success: @escaping ((URL) -> Void), failure: @escaping ((String?) -> Void)) {
         
         let mainComposition = AVMutableComposition()
         let compositionVideoTrack = mainComposition.addMutableTrack(withMediaType: .video, preferredTrackID: kCMPersistentTrackID_Invalid)
@@ -562,10 +573,10 @@ extension CreateVideoViewController {
         
         //Create Directory path for Save
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        var outputURL = documentDirectory.appendingPathComponent("MergeTwoVideos")
+        var outputURL = documentDirectory.appendingPathComponent("MergedVideos")
         do {
             try FileManager.default.createDirectory(at: outputURL, withIntermediateDirectories: true, attributes: nil)
-            outputURL = outputURL.appendingPathComponent("\(outputURL.lastPathComponent).m4v")
+            outputURL = outputURL.appendingPathComponent("\(outputURL.lastPathComponent)_\(counter).m4v")
         }catch let error {
             failure(error.localizedDescription)
         }

@@ -43,7 +43,8 @@ class CropOriginalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        removeAllOutputFiles()
+        removeAllOutputFiles(folder: "output")
+        removeAllOutputFiles(folder: "MergedVideos")
         self.view.backgroundColor = .darkGray
         containerView.backgroundColor = .darkGray
     }
@@ -80,14 +81,14 @@ extension CropOriginalViewController {
         _ = try? manager.removeItem(at: outputURL)
     }
     
-    private func removeAllOutputFiles() {
+    private func removeAllOutputFiles(folder: String) {
         let manager = FileManager.default
         guard let documentDirectory = try? manager.url(
             for: .documentDirectory,
             in: .userDomainMask,
             appropriateFor: nil,
             create: true) else {return}
-        let outputURL = documentDirectory.appendingPathComponent("output")
+        let outputURL = documentDirectory.appendingPathComponent(folder)
         _ = try? manager.removeItem(at: outputURL)
     }
     
