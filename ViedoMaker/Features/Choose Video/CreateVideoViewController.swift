@@ -101,29 +101,26 @@ extension CreateVideoViewController {
     }
     
     @IBAction func finishMerging(_ sender: UIButton) {
-        //        let firstVideo = croppedVideos.first
-        //        self.mergedVideoUrl = originalVideoUrl
+
         var index = 0
-        var mergedUrl: URL?
-        var success2: ((URL?) -> Void)? = nil
-        let success: ((URL) -> Void) = { url in
-            mergedUrl = url
-            if success2 != nil {
-                success2!(url)
+        var mergeParsing: ((URL?) -> Void)? = nil
+       
+        let videoMergeSuccess: ((URL) -> Void) = { url in
+            if mergeParsing != nil {
+                mergeParsing!(url)
+                self.removeAllOutputFiles(filePath: "output/startVideo.mp4")
+                self.removeAllOutputFiles(filePath: "output/endVideo.mp4")
             }
         }
         
-        success2 = { url in
-            print(url)
+        mergeParsing = { url in
             index += 1
-            print(mergedUrl)
             if index < self.croppedVideos.count {
-                self.insertCroppedVideo(croppedVideoURL: (self.croppedVideos[index].editedPath)!, in: url!, startTime: (self.croppedVideos[index].startTime)!, endTime: (self.croppedVideos[index].endTime)!, counter: index, success: success )
+                self.insertCroppedVideo(croppedVideoURL: (self.croppedVideos[index].editedPath)!, in: url!, startTime: (self.croppedVideos[index].startTime)!, endTime: (self.croppedVideos[index].endTime)!, counter: index, success: videoMergeSuccess )
             }
-            
         }
        
-        insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, counter: index, success: success )
+        insertCroppedVideo(croppedVideoURL: (croppedVideos[index].editedPath)!, in: self.originalVideoUrl!, startTime: (croppedVideos[index].startTime)!, endTime: (croppedVideos[index].endTime)!, counter: index, success: videoMergeSuccess )
     }
     
     @IBAction func pickStartTime(_ sender: UIButton) {
@@ -142,6 +139,17 @@ extension CreateVideoViewController {
             self.rangeSlider.upperValue = CMTimeGetSeconds(currentTime)
             self.endTimeLabel.text = "\(rangeSlider.upperValue)"
         }
+    }
+    
+    private func removeAllOutputFiles(filePath: String) {
+        let manager = FileManager.default
+        guard let documentDirectory = try? manager.url(
+            for: .documentDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true) else {return}
+        let outputURL = documentDirectory.appendingPathComponent(filePath)
+        _ = try? manager.removeItem(at: outputURL)
     }
 
     
